@@ -16,15 +16,15 @@ if modulos == "Home":
   st.markdown("Tecnologías utilizadas: ")
 
 elif modulos == "Ejercicio 1":
-  sr.write("Te encuentas en la ventana de ejercicio 1")
+  st.write("Te encuentas en la ventana de ejercicio 1")
 
 elif modulos == "Ejercicio 2":
-  sr.write("Te encuentas en la ventana de ejercicio 2")
+  st.write("Te encuentas en la ventana de ejercicio 2")
 
 elif modulos == "Ejercicio 3":
-  sr.write("Te encuentas en la ventana de ejercicio 3")
+  st.write("Te encuentas en la ventana de ejercicio 3")
 
 else:
-  sr.write("Te encuentas en la ventana de ejercicio 4")
+  st.write("Te encuentas en la ventana de ejercicio 4")
 
 
