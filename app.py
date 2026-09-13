@@ -25,8 +25,8 @@ elif modulos == "Ejercicio 1":
   tipo_Movimiento = st.selectbox("Selecciones el tipo de movimiento",["Ingreso","Gasto"])
   importe = float(st.number_input("Ingresa el importe del movimiento", value=0.00))
   
-  movimiento = list(range(concepto, tipo_Movimiento, importe))
-  st.write(movimiento)
+  #movimiento = list(range(concepto, tipo_Movimiento, importe))
+  #st.write(movimiento)
 
 elif modulos == "Ejercicio 2":
   st.write("Te encuentas en la ventana de ejercicio 2")
