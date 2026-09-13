@@ -1,3 +1,5 @@
 import streamlit as st
 
-st.title("Proyecto Aplicado en Streamlit – Fundamentos de Programación")
+st.title("PROYECTO 1 – APLICACIÓN EN STREAMLIT")
+
+st.sidebar.title("Home")
