@@ -1,10 +1,12 @@
 import streamlit as st
+import numpy as np
 
 st.sidebar.title("Menú lateral")
 
 modulos = st.sidebar.selectbox("Selecciones el modulo",["Home","Ejercicio 1","Ejercicio 2","Ejercicio 3","Ejercicio 4"])
 
 if modulos == "Home":
+  st.image("DMC.png")
   st.title("PROYECTO 1")
   st.title("APLICACIÓN EN STREAMLIT")
 
@@ -21,7 +23,7 @@ elif modulos == "Ejercicio 1":
   
   concepto = st.text_input("Ingresa el concepto del movimiento")
   tipoMovimiento = st.selectbox("Selecciones el tipo de movimiento",["Ingreso","Gasto"])
-  valor = st.number_input("Ingresa el importe del movimiento", value=0)
+  valor = st.number_input("Ingresa el importe del movimiento", value=0.00)
   
   movimiento = list(range(concepto, tipoMovimiento, valor))
   st.write(movimiento)
