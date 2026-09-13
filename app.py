@@ -6,7 +6,7 @@ st.sidebar.title("Menú lateral")
 modulos = st.sidebar.selectbox("Selecciones el modulo",["Home","Ejercicio 1","Ejercicio 2","Ejercicio 3","Ejercicio 4"])
 
 if modulos == "Home":
-  st.image("DMC.png", width = 100)
+  st.image("DMC.png", width = 300)
   st.title("PROYECTO 1")
   st.title("APLICACIÓN EN STREAMLIT")
 
