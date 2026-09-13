@@ -2,7 +2,7 @@ import streamlit as st
 
 st.title("PROYECTO 1")
 st.title("APLICACIÓN EN STREAMLIT")
-st.header("Elaboraro por: Nilda Echevarria")
+st.header("Elaborado por: ") st.write("Nilda Echevarria")
 st.subheader("Nombre del módulo: Modulo 1")
 st.write("Información general del estudiante: ")
 st.write("Año: 2026")
