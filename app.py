@@ -2,7 +2,7 @@ import streamlit as st
 
 modulos = st.sidebar.selectbox("Selecciones el modulo",["Home","Ejercicio 1","Ejercicio 2","Ejercicio 3","Ejercicio 4"])
 
-if modulos == "Homa"
+if modulos == "Home"
   st.title("PROYECTO 1")
   st.title("APLICACIÓN EN STREAMLIT")
 
