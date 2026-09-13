@@ -2,7 +2,7 @@ import streamlit as st
 
 st.title("PROYECTO 1 – APLICACIÓN EN STREAMLIT")
 
-st.sidebar.title("Menú lateral")}
+st.sidebar.title("Menú lateral")
 
 st.write("Elaboraro por: Nilda Echevarria")
 
