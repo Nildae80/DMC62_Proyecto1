@@ -17,7 +17,7 @@ if modulos == "Home":
 
 elif modulos == "Ejercicio 1":
   st.write("Te encuentas en la ventana de ejercicio 1")
-  st.markdown("En este ejercicio se deberá desarrollar un pequeño módulo para registrar movimientos financieros en una lista vacía.")
+  st.write("En este ejercicio se deberá desarrollar un pequeño módulo para registrar movimientos financieros en una lista vacía.")
   
   concepto = st.text_input("Ingresa el concepto del movimiento")
   tipoMovimiento = st.selectbox("Selecciones el tipo de movimiento",["Ingreso","Gasto"])
