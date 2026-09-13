@@ -9,7 +9,6 @@ if modulos == "Home":
   st.image("DMC.png", width = 300)
   st.title("PROYECTO 1")
   st.title("APLICACIÓN EN STREAMLIT")
-
   st.header("Elaborado por: Nilda Echevarria")
   st.subheader("Modulo 1")
   st.write("Información general del estudiante: ")
@@ -18,12 +17,13 @@ if modulos == "Home":
   st.write("Tecnologías utilizadas: ")
 
 elif modulos == "Ejercicio 1":
-  st.write("Te encuentas en la ventana de ejercicio 1")
+  st.header("Te encuentas en la ventana de ejercicio 1")
   st.write("En este ejercicio se deberá desarrollar un pequeño módulo para registrar movimientos financieros en una lista vacía.")
   
   concepto = st.text_input("Ingresa el concepto del movimiento")
   tipo_Movimiento = st.selectbox("Selecciones el tipo de movimiento",["Ingreso","Gasto"])
   importe = float(st.number_input("Ingresa el importe del movimiento", value=0.00))
+  guardar = st.button("Guardar")
   
   #movimiento = list(range(concepto, tipo_Movimiento, importe))
   #st.write(movimiento)
