@@ -12,3 +12,17 @@ st.markdown("Tecnologías utilizadas: ")
 st.sidebar.title("Menú lateral")
 
 modulos = st.sidebar.selectbox("Selecciones el modulo",["Home","Ejercicio 1","Ejercicio 2","Ejercicio 3","Ejercicio 4"])
+
+if modulos == "Ejercicio 1":
+  sr.write("Te encuentas en la ventana de ejercicio 1")
+
+elif modulos == "Ejercicio 2":
+  sr.write("Te encuentas en la ventana de ejercicio 2")
+
+elif modulos == "Ejercicio 3":
+  sr.write("Te encuentas en la ventana de ejercicio 3")
+
+elif modulos == "Ejercicio 4":
+  sr.write("Te encuentas en la ventana de ejercicio 4")
+
+
