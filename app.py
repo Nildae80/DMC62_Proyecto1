@@ -63,7 +63,7 @@ elif modulos == "Ejercicio 1":
 
   if total>0:
     st.subheader("Flujo de caja: A FAVOR")
-  else
+  else:
     st.subheader("Flujo de caja: EN CONTRA")
 
 
