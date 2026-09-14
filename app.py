@@ -20,8 +20,6 @@ if modulos == "Home":
 elif modulos == "Ejercicio 1":
   st.header("Te encuentas en la ventana de ejercicio 1")
   st.write("En este ejercicio se deberá desarrollar un pequeño módulo para registrar movimientos financieros en una lista vacía.")
-  ingresos_total = 0.00
-  gastos_total = 0.00
   
   if "movimientos" not in st.session_state:
     st.session_state.movimientos = []
@@ -36,9 +34,9 @@ elif modulos == "Ejercicio 1":
       st.success(f"¡'{concepto}' agregado con éxito!")
       
       if tipo_Movimiento == "Ingreso":
-        ingresos_total = ingresos_total + st.session_state.movimientos.append((importe))
+        ingresos_total = ingresos_total + importe
       else:
-        gastos_total = gastos_total + st.session_state.movimientos.append((importe))
+        gastos_total = gastos_total + importe
         
     else:
       st.warning("Por favor, ingresa un movimiento antes de presionar el botón.")
