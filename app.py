@@ -20,9 +20,9 @@ elif modulos == "Ejercicio 1":
   st.header("Te encuentas en la ventana de ejercicio 1")
   st.write("En este ejercicio se deberá desarrollar un pequeño módulo para registrar movimientos financieros en una lista vacía.")
   
-  concepto = st.text_input("Ingresa el concepto del movimiento")
+  concepto = st.text.input("Ingresa el concepto del movimiento")
   tipo_Movimiento = st.selectbox("Selecciones el tipo de movimiento",["Ingreso","Gasto"])
-  importe = float(st.number_input("Ingresa el importe del movimiento", value=0.00))
+  importe = float(st.number.input("Ingresa el importe del movimiento", value=0.00))
   guardar = st.button("Guardar")
   
   #movimiento = list(range(concepto, tipo_Movimiento, importe))
