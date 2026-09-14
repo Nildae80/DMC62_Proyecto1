@@ -43,19 +43,22 @@ elif modulos == "Ejercicio 1":
     for mov in st.session_state.movimientos
   )
   
-  #if mov[1] == "Ingreso":
-  #  ingresos_total = sum(mov[2] for mov in st.session_state.movimientos)
+  #sumar los ingresos
   ingresos_total = sum(
     mov[2] if mov[1] == "Ingreso" else 0
     for mov in st.session_state.movimientos
   )
-  #else:
-  #  gastos_total = sum(mov[2] for mov in st.session_state.movimientos)
+
+  #sumar los gastos
+  gastos_total = sum(
+    mov[2] if mov[1] == "Gasto" else 0
+    for mov in st.session_state.movimientos
+  )
     
   st.subheader("Elementos guardados:")
   st.write(st.session_state.movimientos)
   st.write("Ingresos total: ", f"{ingresos_total:.2f}")
-  #st.write("Gastos total: ", f"{gastos_total:.2f}")
+  st.write("Gastos total: ", f"{gastos_total:.2f}")
   st.write("Saldo total: ", f"{total:.2f}")
 
 
