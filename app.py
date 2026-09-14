@@ -20,13 +20,23 @@ elif modulos == "Ejercicio 1":
   st.header("Te encuentas en la ventana de ejercicio 1")
   st.write("En este ejercicio se deberá desarrollar un pequeño módulo para registrar movimientos financieros en una lista vacía.")
   
+  if "movimientos" not in st.session_state:
+    st.session_state.movimientos = []
+    
   concepto = st.text_input("Ingresa el concepto del movimiento")
   tipo_Movimiento = st.selectbox("Selecciones el tipo de movimiento",["Ingreso","Gasto"])
   importe = float(st.number_input("Ingresa el importe del movimiento", value=0.00))
   guardar = st.button("Guardar")
-  
-  #movimiento = list.append(concepto, tipo_Movimiento, importe)
-  #st.write(movimiento)
+
+  if st.button("Guardar")
+    if concepto: and tipo_Movimiento: and importe:
+      st.session_state.movimientos.append(concepto, tipo_Movimiento, importe)
+      st.success(f"¡'{concepto}' agregado con éxito!")
+    else:
+      st.warning("Por favor, ingresa un valor antes de presionar el botón.")
+
+  st.subheader("Elementos guardados:")
+  st.write(st.session_state.movimientos)
 
 elif modulos == "Ejercicio 2":
   st.write("Te encuentas en la ventana de ejercicio 2")
