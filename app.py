@@ -34,7 +34,7 @@ elif modulos == "Ejercicio 1":
     gastos_total = 0
     if concepto:
       st.session_state.movimientos.append((concepto,tipo_Movimiento,importe))
-      st.success(f"¡'{concepto}' agregado con éxito!")
+      st.success(f"¡Movimiento '{concepto}' agregado con éxito!")
         
     else:
       st.warning("Por favor, ingresa un movimiento antes de presionar el botón.")
@@ -76,15 +76,17 @@ elif modulos == "Ejercicio 1":
   st.write("Saldo total: ", f"{saldo_total:.2f}")
 
   if saldo_total > 0:
-    st.subheader("Flujo de caja: A FAVOR")
     st.metric(
       label="Flujo de caja", 
       value="A FAVOR", 
-      delta="+12%"
+      delta="+"
     )
   else:
-    st.subheader("Flujo de caja: EN CONTRA")
-
+    st.metric(
+      label="Flujo de caja", 
+      value="EN CONTRA", 
+      delta="-"
+    )
 
 elif modulos == "Ejercicio 2":
   st.header("Te encuentas en la ventana de ejercicio 2")
@@ -131,7 +133,7 @@ elif modulos == "Ejercicio 2":
   
       # Ejemplo de operaciones vectorizadas con NumPy sobre la matriz
       total_general = np.sum(st.session_state.inventario[:, 4].astype(float))
-      st.metric("Venta Total Acumulada", f"${total_general:,.2f}")
+      st.metric("Venta Total Acumulada", f"S/ {total_general:,.2f}")
   
   else:
       st.info("Aún no hay productos registrados.")
