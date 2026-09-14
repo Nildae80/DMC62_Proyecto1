@@ -46,7 +46,7 @@ elif modulos == "Ejercicio 1":
   #if mov[1] == "Ingreso":
   #  ingresos_total = sum(mov[2] for mov in st.session_state.movimientos)
   ingresos_total = sum(
-    mov[2] if mov[1] == "Ingreso" else continue
+    mov[2] if mov[1] == "Ingreso" else 0
     for mov in st.session_state.movimientos
   )
   #else:
