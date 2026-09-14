@@ -34,11 +34,6 @@ elif modulos == "Ejercicio 1":
     if concepto:
       st.session_state.movimientos.append((concepto,tipo_Movimiento,importe))
       st.success(f"¡'{concepto}' agregado con éxito!")
-      
-      #if tipo_Movimiento == "Ingreso":
-      #  ingresos_total = sum(mov[2] for mov in st.session_state.movimientos)
-      #else:
-      #  gastos_total = sum(mov[2] for mov in st.session_state.movimientos)
         
     else:
       st.warning("Por favor, ingresa un movimiento antes de presionar el botón.")
@@ -47,10 +42,15 @@ elif modulos == "Ejercicio 1":
     mov[2] if mov[1] == "Ingreso" else -mov[2] 
     for mov in st.session_state.movimientos
   )
+  if mov[1] == "Ingreso":
+    ingresos_total = sum(mov[2] for mov in st.session_state.movimientos)
+  else:
+    gastos_total = sum(mov[2] for mov in st.session_state.movimientos)
+    
   st.subheader("Elementos guardados:")
   st.write(st.session_state.movimientos)
-  #st.write("Ingresos total: ", ingresos_total)
-  #st.write("Gastos total: ", gastos_total)
+  st.write("Ingresos total: ", f"{ingresos_total:.2f}")
+  st.write("Gastos total: ", f"{gastos_total:.2f}")
   st.write("Saldo total: ", f"{total:.2f}")
 
 
