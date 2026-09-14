@@ -28,7 +28,7 @@ elif modulos == "Ejercicio 1":
   importe = float(st.number_input("Ingresa el importe del movimiento", value=0.00))
   guardar = st.button("Guardar")
 
-  if st.button("Guardar")
+  if st.button("Guardar"):
     if concepto: and tipo_Movimiento: and importe:
       st.session_state.movimientos.append(concepto, tipo_Movimiento, importe)
       st.success(f"¡'{concepto}' agregado con éxito!")
