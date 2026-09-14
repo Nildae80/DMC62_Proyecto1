@@ -62,7 +62,7 @@ elif modulos == "Ejercicio 1":
     columns=["Concepto", "Tipo de Movimiento", "Importe"]
   )
   
-  st.subheader("Elementos guardados:")
+  st.subheader("Listado de movimientos:")
   #st.write(st.session_state.movimientos) #lo mostramos como una lista
   #Mostrar con formato de decimales
   st.dataframe(
