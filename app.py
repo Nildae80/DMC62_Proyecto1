@@ -1,5 +1,6 @@
 import streamlit as st
 import numpy as np
+import pandas as pd
 
 st.sidebar.title("Menú lateral")
 
@@ -54,9 +55,15 @@ elif modulos == "Ejercicio 1":
     mov[2] if mov[1] == "Gasto" else 0
     for mov in st.session_state.movimientos
   )
-    
+
+  df_movimientos = pd.DataFrame(
+    st.session_state.movimientos, 
+    columns=["Concepto", "Tipo de Movimiento", "Importe"]
+)
+  
   st.subheader("Elementos guardados:")
   st.write(st.session_state.movimientos)
+  st.dataframe(df_movimientos, use_container_width=True)
   st.write("Ingresos total: ", f"{ingresos_total:.2f}")
   st.write("Gastos total: ", f"{gastos_total:.2f}")
   st.write("Saldo total: ", f"{total:.2f}")
