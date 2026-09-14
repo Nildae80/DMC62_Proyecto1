@@ -25,7 +25,7 @@ elif modulos == "Ejercicio 1":
   importe = float(st.number_input("Ingresa el importe del movimiento", value=0.00))
   guardar = st.button("Guardar")
   
-  movimiento = list(concepto, tipo_Movimiento, importe)
+  movimiento = list.append(concepto, tipo_Movimiento, importe)
   st.write(movimiento)
 
 elif modulos == "Ejercicio 2":
