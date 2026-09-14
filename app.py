@@ -63,7 +63,18 @@ elif modulos == "Ejercicio 1":
   
   st.subheader("Elementos guardados:")
   st.write(st.session_state.movimientos)
-  st.dataframe(df_movimientos, use_container_width=True)
+  #st.dataframe(df_movimientos, use_container_width=True)
+  # 2. Mostrar con formato de decimales (y opcionalmente signo de moneda)
+  st.dataframe(
+    df_movimientos,
+    use_container_width=True,
+    column_config={
+        "Importe": st.column_config.NumberColumn(
+            "Importe",
+            format="$ %.2f"  # %.2f obliga a mostrar 2 decimales
+        )
+    }
+  )
   st.write("Ingresos total: ", f"{ingresos_total:.2f}")
   st.write("Gastos total: ", f"{gastos_total:.2f}")
   st.write("Saldo total: ", f"{total:.2f}")
