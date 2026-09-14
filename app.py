@@ -26,7 +26,7 @@ elif modulos == "Ejercicio 1":
   concepto = st.text_input("Ingresa el concepto del movimiento")
   tipo_Movimiento = st.selectbox("Selecciones el tipo de movimiento",["Ingreso","Gasto"])
   importe = float(st.number_input("Ingresa el importe del movimiento", value=0.00))
-  guardar = st.button("Guardar")
+  #guardar = st.button("Guardar")
 
   if st.button("Guardar"):
     if concepto: 
