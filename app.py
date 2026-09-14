@@ -56,22 +56,22 @@ elif modulos == "Ejercicio 1":
     for mov in st.session_state.movimientos
   )
 
+  #Creamos el DataFrame
   df_movimientos = pd.DataFrame(
     st.session_state.movimientos, 
     columns=["Concepto", "Tipo de Movimiento", "Importe"]
-)
+  )
   
   st.subheader("Elementos guardados:")
-  st.write(st.session_state.movimientos)
-  #st.dataframe(df_movimientos, use_container_width=True)
-  # 2. Mostrar con formato de decimales (y opcionalmente signo de moneda)
+  #st.write(st.session_state.movimientos) #lo mostramos como una lista
+  #Mostrar con formato de decimales
   st.dataframe(
     df_movimientos,
     use_container_width=True,
     column_config={
         "Importe": st.column_config.NumberColumn(
             "Importe",
-            format="$ %.2f"  # %.2f obliga a mostrar 2 decimales
+            format="S/ %.2f"
         )
     }
   )
