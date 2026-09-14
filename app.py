@@ -16,9 +16,12 @@ if modulos == "Home":
   st.write("Breve descripción del proyecto: Este proyecto representa la primera aplicación práctica del módulo y permitirá evidenciar el uso de estructuras de datos, widgets, funciones, clases y lógica de programación en una interfaz interactiva.")
   st.write("Tecnologías utilizadas: ")
 
+
 elif modulos == "Ejercicio 1":
   st.header("Te encuentas en la ventana de ejercicio 1")
   st.write("En este ejercicio se deberá desarrollar un pequeño módulo para registrar movimientos financieros en una lista vacía.")
+  ingresos_total = 0.00
+  gastos_total = 0.00
   
   if "movimientos" not in st.session_state:
     st.session_state.movimientos = []
@@ -26,25 +29,31 @@ elif modulos == "Ejercicio 1":
   concepto = st.text_input("Ingresa el concepto del movimiento")
   tipo_Movimiento = st.selectbox("Selecciones el tipo de movimiento",["Ingreso","Gasto"])
   importe = float(st.number_input("Ingresa el importe del movimiento", value=0.00))
-  #guardar = st.button("Guardar")
-
+  
   if st.button("Guardar"):
-    if concepto: 
+    if concepto:
       st.session_state.movimientos.append((concepto,tipo_Movimiento,importe))
-      #st.session_state.movimientos.append(tipo_Movimiento)
-      #st.session_state.movimientos.append(importe)
-      #st.success(f"¡'{concepto}' agregado con éxito!")
+      st.success(f"¡'{concepto}' agregado con éxito!")
+      
+      if tipo_Movimiento == "Ingreso":
+        ingresos_total = ingresos_total + importe
+      else:
+        gastos_total = gastos_total + importe
+        
     else:
-      st.warning("Por favor, ingresa un valor antes de presionar el botón.")
+      st.warning("Por favor, ingresa un movimiento antes de presionar el botón.")
 
   st.subheader("Elementos guardados:")
   st.write(st.session_state.movimientos)
 
+
 elif modulos == "Ejercicio 2":
   st.write("Te encuentas en la ventana de ejercicio 2")
 
+
 elif modulos == "Ejercicio 3":
   st.write("Te encuentas en la ventana de ejercicio 3")
+
 
 else:
   st.write("Te encuentas en la ventana de ejercicio 4")
