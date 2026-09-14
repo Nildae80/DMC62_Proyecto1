@@ -61,6 +61,11 @@ elif modulos == "Ejercicio 1":
   st.write("Gastos total: ", f"{gastos_total:.2f}")
   st.write("Saldo total: ", f"{total:.2f}")
 
+  if total>0:
+    st.subheader("Flujo de caja: A FAVOR")
+  else
+    st.subheader("Flujo de caja: EN CONTRA")
+
 
 elif modulos == "Ejercicio 2":
   st.write("Te encuentas en la ventana de ejercicio 2")
