@@ -51,7 +51,7 @@ elif modulos == "Ejercicio 1":
   st.write(st.session_state.movimientos)
   #st.write("Ingresos total: ", ingresos_total)
   #st.write("Gastos total: ", gastos_total)
-  st.write("Saldo total: ", f"${total:.2f}")
+  st.write("Saldo total: ", f"{total:.2f}")
 
 
 elif modulos == "Ejercicio 2":
