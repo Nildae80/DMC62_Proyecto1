@@ -34,9 +34,9 @@ elif modulos == "Ejercicio 1":
       st.success(f"¡'{concepto}' agregado con éxito!")
       
       if tipo_Movimiento == "Ingreso":
-        ingresos_total = ingresos_total + importe
+        ingresos_total = sum(movimiento[2] for movimiento in st.session_state.movimientos)
       else:
-        gastos_total = gastos_total + importe
+        gastos_total = sum(movimiento[2] for movimiento in st.session_state.movimientos)
         
     else:
       st.warning("Por favor, ingresa un movimiento antes de presionar el botón.")
