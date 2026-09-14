@@ -36,9 +36,9 @@ elif modulos == "Ejercicio 1":
       st.success(f"¡'{concepto}' agregado con éxito!")
       
       if tipo_Movimiento == "Ingreso":
-        ingresos_total = ingresos_total + st.session_state.movimientos.append((importe)
+        ingresos_total = ingresos_total + st.session_state.movimientos.append((importe))
       else:
-        gastos_total = gastos_total + st.session_state.movimientos.append((importe)
+        gastos_total = gastos_total + st.session_state.movimientos.append((importe))
         
     else:
       st.warning("Por favor, ingresa un movimiento antes de presionar el botón.")
