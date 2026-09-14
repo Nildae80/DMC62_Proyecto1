@@ -30,7 +30,7 @@ elif modulos == "Ejercicio 1":
 
   if st.button("Guardar"):
     if concepto: 
-      st.session_state.movimientos.append({concepto},{tipo_Movimiento},{importe})
+      st.session_state.movimientos.append((concepto,tipo_Movimiento,importe))
       #st.session_state.movimientos.append(tipo_Movimiento)
       #st.session_state.movimientos.append(importe)
       #st.success(f"¡'{concepto}' agregado con éxito!")
