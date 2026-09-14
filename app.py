@@ -99,9 +99,9 @@ elif modulos == "Ejercicio 2":
   categoria = st.selectbox("Categoría", ["Abarrotes","Bebidas","Mascotas","Libreria"])
   precio = st.number_input("Precio ($)", min_value=0.0, step=0.5, format="%.2f")
   cantidad = st.number_input("Cantidad", min_value=1, step=1)
-  boton_guardar = st.form_submit_button("Registrar Producto")
+  #boton_guardar = st.form_submit_button("Registrar Producto")
   
-  if boton_guardar:
+  if st.button("Guardar"):
     if nombre.strip() == "":
       st.error("Por favor ingresa un nombre para el producto.")
     else:
