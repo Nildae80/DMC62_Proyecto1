@@ -29,14 +29,16 @@ elif modulos == "Ejercicio 1":
   importe = float(st.number_input("Ingresa el importe del movimiento", value=0.00))
   
   if st.button("Guardar"):
+    ingresos_total = 0
+    gastos_total = 0
     if concepto:
       st.session_state.movimientos.append((concepto,tipo_Movimiento,importe))
       st.success(f"¡'{concepto}' agregado con éxito!")
       
       if tipo_Movimiento == "Ingreso":
-        ingresos_total = sum(movimiento[2] for movimiento in st.session_state.movimientos)
+        ingresos_total = sum(mov[2] for mov in st.session_state.movimientos)
       else:
-        gastos_total = sum(movimiento[2] for movimiento in st.session_state.movimientos)
+        gastos_total = sum(mov[2] for mov in st.session_state.movimientos)
         
     else:
       st.warning("Por favor, ingresa un movimiento antes de presionar el botón.")
