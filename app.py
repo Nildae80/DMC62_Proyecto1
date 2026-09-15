@@ -8,8 +8,8 @@ modulos = st.sidebar.selectbox("Selecciones el modulo",["Home","Ejercicio 1","Ej
 
 if modulos == "Home":
   st.image("DMC.png", width = 300)
-  st.title("PROYECTO 1",text_alignment="center")
-  st.title("APLICACIÓN EN STREAMLIT",text_alignment="center")
+  st.title("PROYECTO 1")
+  st.title("APLICACIÓN EN STREAMLIT")
   st.header("Elaborado por: Nilda Echevarria")
   st.subheader("Modulo 1")
   st.write("Información general del estudiante: ")
