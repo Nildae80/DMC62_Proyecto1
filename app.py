@@ -8,14 +8,14 @@ modulos = st.sidebar.selectbox("Selecciones el modulo",["Home","Ejercicio 1","Ej
 
 if modulos == "Home":
   st.image("DMC.png", width = 300)
-  st.title("PROYECTO 1")
-  st.title("APLICACIÓN EN STREAMLIT")
+  st.title("PROYECTO 1",text_alignment="center")
+  st.title("APLICACIÓN EN STREAMLIT",text_alignment="center")
   st.header("Elaborado por: Nilda Echevarria")
   st.subheader("Modulo 1")
   st.write("Información general del estudiante: ")
   st.write("Año: 2026")
   st.write("Breve descripción del proyecto: Este proyecto representa la primera aplicación práctica del módulo y permitirá evidenciar el uso de estructuras de datos, widgets, funciones, clases y lógica de programación en una interfaz interactiva.")
-  st.write("Tecnologías utilizadas: ")
+  st.write("Tecnologías utilizadas: GIT, Stramlit")
 
 
 elif modulos == "Ejercicio 1":
@@ -26,16 +26,15 @@ elif modulos == "Ejercicio 1":
     st.session_state.movimientos = []
     
   concepto = st.text_input("Ingresa el concepto del movimiento")
-  tipo_Movimiento = st.selectbox("Selecciones el tipo de movimiento",["Ingreso","Gasto"])
-  importe = float(st.number_input("Ingresa el importe del movimiento S/ ", value=0.00, min_value=0.0, step=0.5, format="%.2f"))
+  tipo_Movimiento = st.selectbox("Selecciones el tipo de movimiento",["Ingreso","Gasto"],index=None)
+  importe = float(st.number_input("Ingresa el importe del movimiento S/ ", value=0.00, min_value=0.1, step=0.5, format="%.2f"))
   
   if st.button("Guardar"):
     ingresos_total = 0
     gastos_total = 0
     if concepto:
       st.session_state.movimientos.append((concepto,tipo_Movimiento,importe))
-      st.success(f"¡Movimiento '{concepto}' agregado con éxito!")
-        
+      st.success(f"¡Movimiento '{concepto}' agregado con éxito!")        
     else:
       st.warning("Por favor, ingresa un movimiento antes de presionar el botón.")
 
@@ -64,7 +63,7 @@ elif modulos == "Ejercicio 1":
   )
   
   st.subheader("Listado de movimientos:")
-  st.write(st.session_state.movimientos) #lo mostramos como una lista
+  #st.write(st.session_state.movimientos) #lo mostramos como una lista
   #Mostrar con formato de decimales en una tabla con dataframe
   st.dataframe(
     df_movimientos,
