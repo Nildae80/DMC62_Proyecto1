@@ -112,7 +112,7 @@ elif modulos == "Ejercicio 2":
       st.success(f"Producto '{nombre}' registrado con éxito.")
   
   #Mostrar los datos guardados en una tabla
-  st.subheader("Registros guardados (NumPy Array)")
+  st.subheader("Inventario")
   
   if st.session_state.inventario.shape[0] > 0:
       # Convertimos el arreglo de NumPy a DataFrame solo para visualizarlo en la UI
