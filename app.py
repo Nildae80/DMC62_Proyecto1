@@ -27,7 +27,7 @@ elif modulos == "Ejercicio 1":
     
   concepto = st.text_input("Ingresa el concepto del movimiento")
   tipo_Movimiento = st.selectbox("Selecciones el tipo de movimiento",["Ingreso","Gasto"],index=None)
-  importe = float(st.number_input("Ingresa el importe del movimiento S/ ", value=0.00, min_value=0.01, step=0.5, format="%.2f"))
+  importe = float(st.number_input("Ingresa el importe del movimiento S/ ", value=0.00, min_value=0.0, step=0.5, format="%.2f"))
   
   if st.button("Guardar"):
     ingresos_total = 0
