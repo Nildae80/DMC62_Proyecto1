@@ -19,15 +19,16 @@ if modulos == "Home":
 
 
 elif modulos == "Ejercicio 1":
-  st.header("Te encuentas en la ventana de ejercicio 1")
+  st.header("Te encuentas en la ventana del Ejercicio 1")
   st.write("En este ejercicio se deberá desarrollar un pequeño módulo para registrar movimientos financieros en una lista vacía.")
   
   if "movimientos" not in st.session_state:
     st.session_state.movimientos = []
-    
+
+  st.subheader("Formulario de Registra tu Movimientos")
   concepto = st.text_input("Ingresa el concepto del movimiento")
   tipo_Movimiento = st.selectbox("Selecciones el tipo de movimiento",["Ingreso","Gasto"])
-  importe = float(st.number_input("Ingresa el importe del movimiento S/ ", value=0.00, min_value=0.0, step=0.5, format="%.2f"))
+  importe = float(st.number_input("Ingresa el importe del movimiento S/ ", value=0.00, min_value=0, step=0.5, format="%.2f"))
   
   if st.button("Guardar"):
     ingresos_total = 0
@@ -88,7 +89,7 @@ elif modulos == "Ejercicio 1":
     )
 
 elif modulos == "Ejercicio 2":
-  st.header("Te encuentas en la ventana del Eejercicio 2")
+  st.header("Te encuentas en la ventana del Ejercicio 2")
   st.write("En este ejercicio se deberá crear un formulario para registrar información usando arreglos de NumPy. La idea es registrar productos, ventas o registros similares mediante widgets y botones.")
   
   if "inventario" not in st.session_state:
