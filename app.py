@@ -28,7 +28,8 @@ elif modulos == "Ejercicio 1":
   st.subheader("Formulario de Registra tu Movimientos")
   
   concepto = st.text_input("Ingresa el concepto del movimiento")
-  tipo_Movimiento = st.selectbox("Selecciones el tipo de movimiento",["Ingreso","Gasto"])
+  tipo_Movimiento = st.selectbox("Selecciones el tipo de movimiento",["Ingreso","Gasto"],index=None,placeholder="Seleccione tipo de movimiento...")
+  #tipo_mov = col2.selectbox("Tipo Movimiento",("Ingreso","Gasto"),index=None,placeholder="Seleccione...")
   importe = float(st.number_input("Ingresa el importe del movimiento S/ ", value=0.00, min_value=0.0, step=0.5, format="%.2f"))
   
   if st.button("Guardar"):
@@ -39,6 +40,8 @@ elif modulos == "Ejercicio 1":
       st.success(f"¡Movimiento '{concepto}' agregado con éxito!")        
     else:
       st.warning("Por favor, ingresa un movimiento antes de presionar el botón.")
+
+  
 
   #Saldo final
   saldo_total = sum(
@@ -65,8 +68,8 @@ elif modulos == "Ejercicio 1":
   )
   
   st.subheader("Listado de movimientos:")
-  #st.write(st.session_state.movimientos) #lo mostramos como una lista
-  #Mostrar con formato de decimales en una tabla con dataframe
+  #st.write(st.session_state.movimientos)        #lo mostramos como una lista
+  #Mostrar en una tabla con dataframe
   st.dataframe(
     df_movimientos,
     use_container_width=True,
