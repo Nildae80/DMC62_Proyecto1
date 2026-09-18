@@ -87,19 +87,19 @@ elif modulos == "Ejercicio 1":
     st.metric(
       label="Flujo de caja", 
       value="A FAVOR", 
-      delta="+"
+      delta=""
     )
   elif saldo_total < 0:
     st.metric(
       label="Flujo de caja", 
       value="EN CONTRA", 
-      delta="-"
+      delta=""
     )
   else:
     st.metric(
       label="Flujo de caja", 
       value="CUADRADO", 
-      delta="+"
+      delta=""
     )
 
 elif modulos == "Ejercicio 2":
