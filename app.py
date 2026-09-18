@@ -118,12 +118,18 @@ elif modulos == "Ejercicio 2":
   
   if st.button("Guardar"):
     if nombre.strip() == "":
-      st.error("Por favor ingresa un nombre para el producto.")
+      st.warning("Por favor, ingresa un producto antes de presionar el botón.")
+    elif categoria == None:
+      st.warning("Por favor, ingresa el tipo de categoría antes de presionar el botón.")
+    elif precio == 0:
+      st.warning("Por favor, ingresa el precio antes de presionar el botón.")
+    elif precio < 0:
+      st.warning("Por favor, el campo precio no puede ser menor a cero.")
     else:
       total = precio * cantidad  # Calcular el total
       nuevo_registro = np.array([[nombre, categoria, precio, cantidad, total]], dtype=object)   # Crear una nueva fila para el arreglo
       st.session_state.inventario = np.vstack((st.session_state.inventario, nuevo_registro))  # Agregar la nueva fila al arreglo existente usando np.vstack
-      st.success(f"Producto '{nombre}' registrado con éxito.")
+      st.success(f"¡Producto '{nombre}' agregado con éxito!.")
   
   #Mostrar los datos guardados en una tabla
   st.subheader("Inventario")
