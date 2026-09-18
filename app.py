@@ -37,13 +37,13 @@ elif modulos == "Ejercicio 1":
     gastos_total = 0
 
     if concepto.strip() == "":
-      st.error("El campo concepto no puede estar vacío.")
+      st.warning("Por favor, ingresa un movimiento antes de presionar el botón.")
     elif tipo_Movimiento == None:
-      st.error("Seleccione un tipo de movimiento")
+      st.warning("Por favor, ingresa el tipo de movimiento antes de presionar el botón.")
     elif importe == 0:
-      st.error("El campo valor no puede ser cero.")
+      st.warning("Por favor, ingresa el importe antes de presionar el botón.")
     elif importe < 0:
-      st.error("El campo valor no puede ser menor a cero.")
+      st.warning("Por favor, el campo importe no puede ser menor a cero.")
     else:
       st.session_state.movimientos.append((concepto,tipo_Movimiento,importe))
       st.success(f"¡Movimiento '{concepto}' agregado con éxito!")  
