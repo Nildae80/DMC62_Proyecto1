@@ -125,7 +125,7 @@ elif modulos == "Ejercicio 2":
       st.warning("Por favor, ingresa el precio del producto antes de presionar el botón.")
     elif precio < 0:
       st.warning("Por favor, el campo precio del producto no puede ser menor a cero.")
-    elif cantidad = 0:
+    elif cantidad == 0:
       st.warning("Por favor, ingresa la cantidad de productos antes de presionar el botón.")
     elif precio < 0:
       st.warning("Por favor, el campo cantidad del producto no puede ser menor a cero.")
