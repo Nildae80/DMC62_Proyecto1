@@ -29,7 +29,6 @@ elif modulos == "Ejercicio 1":
   
   concepto = st.text_input("Ingresa el concepto del movimiento")
   tipo_Movimiento = st.selectbox("Selecciones el tipo de movimiento",["Ingreso","Gasto"],index=None,placeholder="Seleccione tipo de movimiento...")
-  #tipo_mov = col2.selectbox("Tipo Movimiento",("Ingreso","Gasto"),index=None,placeholder="Seleccione...")
   importe = float(st.number_input("Ingresa el importe del movimiento S/ ", value=0.00, min_value=0.0, step=0.5, format="%.2f"))
   
   if st.button("Guardar"):
@@ -47,28 +46,20 @@ elif modulos == "Ejercicio 1":
     else:
       st.session_state.movimientos.append((concepto,tipo_Movimiento,importe))
       st.success(f"¡Movimiento '{concepto}' agregado con éxito!")  
-        
-    #if concepto:
-    #  st.session_state.movimientos.append((concepto,tipo_Movimiento,importe))
-    #  st.success(f"¡Movimiento '{concepto}' agregado con éxito!")        
-    #else:
-    #  st.warning("Por favor, ingresa un movimiento antes de presionar el botón.")
-
-  
-
-  #Saldo final
+    
+  #Saldo total:
   saldo_total = sum(
     mov[2] if mov[1] == "Ingreso" else -mov[2] 
     for mov in st.session_state.movimientos
   )
   
-  #sumar los ingresos
+  #Ingresos total:
   ingresos_total = sum(
     mov[2] if mov[1] == "Ingreso" else 0
     for mov in st.session_state.movimientos
   )
 
-  #sumar los gastos
+  #Gastos total:
   gastos_total = sum(
     mov[2] if mov[1] == "Gasto" else 0
     for mov in st.session_state.movimientos
@@ -81,7 +72,7 @@ elif modulos == "Ejercicio 1":
   )
   
   st.subheader("Listado de movimientos:")
-  #st.write(st.session_state.movimientos)        #lo mostramos como una lista
+  #st.write(st.session_state.movimientos)        #Si lo queremos mostrar como una lista
   #Mostrar en una tabla con dataframe
   st.dataframe(
     df_movimientos,
