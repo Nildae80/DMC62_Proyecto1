@@ -163,8 +163,9 @@ elif modulos == "Ejercicio 2":
 
 
 elif modulos == "Ejercicio 3":
-  st.header("Te encuentas en la ventana de ejercicio 3")
-
+  st.header("Te encuentas en la ventana del Ejercicio 3")
+  st.write("En este ejercicio se usara funciones desde una librería externa.")
+  
 
 else:
   st.header("Te encuentas en la ventana de ejercicio 4")
