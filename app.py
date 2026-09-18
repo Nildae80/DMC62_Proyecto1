@@ -122,9 +122,13 @@ elif modulos == "Ejercicio 2":
     elif categoria == None:
       st.warning("Por favor, ingresa el tipo de categoría antes de presionar el botón.")
     elif precio == 0:
-      st.warning("Por favor, ingresa el precio antes de presionar el botón.")
+      st.warning("Por favor, ingresa el precio del producto antes de presionar el botón.")
     elif precio < 0:
-      st.warning("Por favor, el campo precio no puede ser menor a cero.")
+      st.warning("Por favor, el campo precio del producto no puede ser menor a cero.")
+    elif cantidad = 0:
+      st.warning("Por favor, ingresa la cantidad de productos antes de presionar el botón.")
+    elif precio < 0:
+      st.warning("Por favor, el campo cantidad del producto no puede ser menor a cero.")
     else:
       total = precio * cantidad  # Calcular el total
       nuevo_registro = np.array([[nombre, categoria, precio, cantidad, total]], dtype=object)   # Crear una nueva fila para el arreglo
