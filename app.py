@@ -87,19 +87,19 @@ elif modulos == "Ejercicio 1":
     st.metric(
       label="Flujo de caja", 
       value="A FAVOR", 
-      delta=""
+      delta="+"
     )
   elif saldo_total < 0:
     st.metric(
       label="Flujo de caja", 
       value="EN CONTRA", 
-      delta=""
+      delta="-"
     )
   else:
     st.metric(
       label="Flujo de caja", 
       value="CUADRADO", 
-      delta=""
+      delta="+"
     )
 
 elif modulos == "Ejercicio 2":
@@ -111,11 +111,10 @@ elif modulos == "Ejercicio 2":
   
   st.subheader("Formulario de Registro de Productos")
   
-  nombre = st.text_input("Nombre del Producto")
-  categoria = st.selectbox("Categoría", ["Abarrotes","Bebidas","Mascotas","Libreria"])
-  precio = st.number_input("Precio S/", min_value=0.0, step=0.5, format="%.2f")
-  cantidad = st.number_input("Cantidad", min_value=1, step=1)
-  #boton_guardar = st.form_submit_button("Registrar Producto")
+  nombre = st.text_input("Ingresa el nombre del Producto")
+  categoria = st.selectbox("Selecciona la categoría del producto", ["Abarrotes","Bebidas","Mascotas","Libreria"],index=None,placeholder="Seleccione la categoría...")
+  precio = float(st.number_input("Ingresa el precio de cada producto (S/) ", value=0.00, min_value=0.0, step=0.5, format="%.2f"))
+  cantidad = int(st.number_input("Cantidad", min_value=1, step=1))
   
   if st.button("Guardar"):
     if nombre.strip() == "":
