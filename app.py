@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import libreria_funciones_proyecto1 as lf
-import librería_clases_proyecto1 as lc
+from libreria_clases_proyecto1 import Servidor
 
 st.sidebar.title("Especialización en Python for Analytics")
 imagen = st.sidebar.image("Python_logo.png", width=200)
