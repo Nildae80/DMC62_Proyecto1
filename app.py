@@ -187,8 +187,9 @@ elif modulos == "Ejercicio 3":
     velocidad = float(st.number_input("Ingresa la velocidad de transferencia (MBPS)",value=0.00,min_value=0.0,step=0.1,format="%.2f",))
   
     if st.button("Ejecutar", type="primary"):
-      if velocidad <= 0: or tamano_archivo <= 0:
+      if velocidad <= 0 or tamano_archivo <= 0:
         st.error("El tamaño del archivo y la velocidad deben ser mayores a 0.")
+      
       else:
         resultado_tiempo = lf.calcular_tiempo_transferencia_archivo(tamano_archivo, velocidad)
     
