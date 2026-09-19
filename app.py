@@ -183,14 +183,12 @@ elif modulos == "Ejercicio 3":
   tipo_Funcion = st.selectbox("Seleccione el tipo de función",["Calcular tiempo de transferencia de archivo", "Otro"],index=None,placeholder="Seleccione tipo de movimiento...",)
   
   if tipo_Funcion == "Calcular tiempo de transferencia de archivo": 
-    tamano_archivo = float(st.number_input("Ingresa el tamaño del archivo (MB)",value=0.00,min_value=0.0,step=0.1,format="%.2f",))
+    tamano_archivo = float(st.number_input("Ingresa el tamaño del archivo (MB)",value=0.00,min_value=0.01,step=0.1,format="%.2f",))
     velocidad = float(st.number_input("Ingresa la velocidad de transferencia (MBPS)",value=0.00,min_value=0.0,step=0.1,format="%.2f",))
   
     if st.button("Ejecutar", type="primary"):
-      if velocidad <= 0:
-        st.error("La velocidad de transferencia debe ser mayor a 0.")
-      if tamano_archivo <= 0:
-        st.error("El tamaño del archivo debe ser mayor a 0.")
+      if velocidad <= 0: or tamano_archivo <= 0:
+        st.error("El tamaño del archivo y la velocidad deben ser mayores a 0.")
       else:
         resultado_tiempo = lf.calcular_tiempo_transferencia_archivo(tamano_archivo, velocidad)
     
