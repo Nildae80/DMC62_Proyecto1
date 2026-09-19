@@ -177,8 +177,8 @@ elif modulos == "Ejercicio 3":
 
   if st.button("Ejecutar",type="primary"):
     resultado_tiempo =  lf.calcular_tiempo_transferencia_archivo(tamano_archivo,velocidad)
-    st.write(f"El resultado de tu valor futuro de inversion es: {resultado_tiempo["tiempo_minutos"]}")
-    st.write(f"El resultado de tu valor futuro de inversion es: {resultado_tiempo["tiempo_segundos"]}")
+    st.write(f"El tiempo de transferencia es : {resultado_tiempo["tiempo_minutos"]} : {resultado_tiempo["tiempo_segundos"]}")
+    #st.write(f"El tiempo de transferencia es: {resultado_tiempo["tiempo_segundos"]}")
 
 else:
   st.header("Te encuentas en la ventana de ejercicio 4")
