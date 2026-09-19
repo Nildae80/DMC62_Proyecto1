@@ -6,7 +6,11 @@ import libreria_funciones_proyecto1 as lf
 st.sidebar.title("Especialización en Python for Analytics")
 imagen = st.sidebar.image("Python_logo.png", width=200)
 modulos = st.sidebar.selectbox("Selecciones el modulo",["Home","Ejercicio 1","Ejercicio 2","Ejercicio 3","Ejercicio 4"])
-imagen1 = st.sidebar.image("DMC.png", width=100)
+cols1, cols2, cols3 = st.sidebar.columns([1, 2, 1])
+
+with cols2:
+  st.sidebar.image("DMC.png", width=100)
+
 
 # Creamos 3 columnas (la central es más ancha para dar espacio)
 col1, col2, col3 = st.columns([1, 2, 1])
