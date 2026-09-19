@@ -195,7 +195,7 @@ elif modulos == "Ejercicio 3":
         minutos = resultado_tiempo["tiempo_minutos"]
         segundos = resultado_tiempo["tiempo_segundos"]
 
-        if "tiempo" not in st.session_state or st.session_state.tiempo.shape[1] != 2:
+        if "tiempo" not in st.session_state or st.session_state.tiempo.shape[1] != 4:
           st.session_state.tiempo = np.empty((0, 4), dtype=object)
         
         nuevo_registro = np.array([[tamano_archivo, velocidad, minutos, segundos]], dtype=object)
