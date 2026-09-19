@@ -194,7 +194,10 @@ elif modulos == "Ejercicio 3":
     
         minutos = resultado_tiempo["tiempo_minutos"]
         segundos = resultado_tiempo["tiempo_segundos"]
-    
+
+        if "tiempo" not in st.session_state or st.session_state.tiempo.shape[1] != 2:
+          st.session_state.tiempo = np.empty((0, 2), dtype=object)
+        
         nuevo_registro = np.array([[minutos, segundos]], dtype=object)
         st.session_state.tiempo = np.vstack((st.session_state.tiempo, nuevo_registro))
     
