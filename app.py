@@ -76,42 +76,47 @@ elif modulos == "Ejercicio 1":
     for mov in st.session_state.movimientos
   )
 
-  #Creamos el DataFrame
-  df_movimientos = pd.DataFrame(
-    st.session_state.movimientos, 
-    columns=["Concepto", "Tipo de Movimiento", "Importe"]
-  )
+  if st.session_state.movimientos.shape[0] > 0:
+    #Creamos el DataFrame
+    df_movimientos = pd.DataFrame(
+      st.session_state.movimientos, 
+      columns=["Concepto", "Tipo de Movimiento", "Importe"]
+    )
+    
+    st.subheader("Listado de movimientos:")
+    #st.write(st.session_state.movimientos)        #Si lo queremos mostrar como una lista
+    #Mostrar en una tabla con dataframe
+    st.dataframe(
+      df_movimientos,
+      use_container_width=True,
+      column_config={"Importe": st.column_config.NumberColumn("Importe", format="S/ %.2f")}
+    )
+    st.write("Ingresos total: ", f"{ingresos_total:.2f}")
+    st.write("Gastos total: ", f"{gastos_total:.2f}")
+    st.write("Saldo total: ", f"{saldo_total:.2f}")
   
-  st.subheader("Listado de movimientos:")
-  #st.write(st.session_state.movimientos)        #Si lo queremos mostrar como una lista
-  #Mostrar en una tabla con dataframe
-  st.dataframe(
-    df_movimientos,
-    use_container_width=True,
-    column_config={"Importe": st.column_config.NumberColumn("Importe", format="S/ %.2f")}
-  )
-  st.write("Ingresos total: ", f"{ingresos_total:.2f}")
-  st.write("Gastos total: ", f"{gastos_total:.2f}")
-  st.write("Saldo total: ", f"{saldo_total:.2f}")
-
-  if saldo_total > 0:
-    st.metric(
-      label="Flujo de caja", 
-      value="A FAVOR", 
-      delta="+"
-    )
-  elif saldo_total < 0:
-    st.metric(
-      label="Flujo de caja", 
-      value="EN CONTRA", 
-      delta="-"
-    )
+    if saldo_total > 0:
+      st.metric(
+        label="Flujo de caja", 
+        value="A FAVOR", 
+        delta="+"
+      )
+    elif saldo_total < 0:
+      st.metric(
+        label="Flujo de caja", 
+        value="EN CONTRA", 
+        delta="-"
+      )
+    else:
+      st.metric(
+        label="Flujo de caja", 
+        value="CUADRADO", 
+        delta="+"
+      )
   else:
-    st.metric(
-      label="Flujo de caja", 
-      value="CUADRADO", 
-      delta="+"
-    )
+    st.info("Aún no hay productos registrados.")
+
+
 
 elif modulos == "Ejercicio 2":
   st.header("Te encuentas en la ventana del Ejercicio 2")
@@ -165,7 +170,6 @@ elif modulos == "Ejercicio 2":
           },
       )
   
-      # Ejemplo de operaciones vectorizadas con NumPy sobre la matriz
       total_general = np.sum(st.session_state.inventario[:, 4].astype(float))
       st.metric("Importe Total Acumulada", f"S/ {total_general:,.2f}")
   
@@ -235,7 +239,7 @@ elif modulos == "Ejercicio 3":
   else:
     st.info("Aún no hay ejecuciones registradas.")
 
-####
+
 
 
 else:
