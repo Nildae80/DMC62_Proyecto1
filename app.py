@@ -163,7 +163,7 @@ elif modulos == "Ejercicio 2":
   
       # Ejemplo de operaciones vectorizadas con NumPy sobre la matriz
       total_general = np.sum(st.session_state.inventario[:, 4].astype(float))
-      st.metric("Venta Total Acumulada", f"S/ {total_general:,.2f}")
+      st.metric("Importe Total Acumulada", f"S/ {total_general:,.2f}")
   
   else:
       st.info("Aún no hay productos registrados.")
@@ -174,7 +174,7 @@ elif modulos == "Ejercicio 3":
   st.write("En este ejercicio se usara funciones desde una librería externa.")
 
   if "tiempo_transferencia" not in st.session_state:
-    st.session_state.inventario = np.empty((0, 5), dtype=object) # arreglo vacío de 2 dimensiones con 5 columnas
+    st.session_state.tiempo = np.empty((0, 5), dtype=object) # arreglo vacío de 2 dimensiones con 5 columnas
   
   st.subheader("Formulario de registro para calcular el tiempo de transferencia de un archivo")
 
@@ -192,6 +192,32 @@ elif modulos == "Ejercicio 3":
     st.write(f"No se tiene implementado otras funciones")
   else:
     st.write(f"Elija una opción.")
+##
+  #Mostrar los datos guardados en una tabla
+  st.subheader("Tabla historica de resultados obtenidos")
+  
+  if st.session_state.tiempo.shape[0] > 0:
+      # Convertimos el arreglo de NumPy a DataFrame solo para visualizarlo en la UI
+      df_mostrar = pd.DataFrame(
+          st.session_state.tiempo,
+          columns=["Tiempo en Minutos", "Tiempo en Segundos"],
+      )
+  
+      st.dataframe(
+          df_mostrar,
+          use_container_width=True,
+          column_config={
+              "Tiempo en Minutos": st.column_config.NumberColumn(f"El tiempo de transferencia en minutos: {resultado_tiempo["tiempo_minutos"]}"),
+              "Tiempo en Segundos": st.column_config.NumberColumn(f"El tiempo de transferencia en segundos: {resultado_tiempo["tiempo_segundos"]}"),
+          },
+      )
+   
+  else:
+      st.info("Aún no hay productos registrados.")
+
+####
+
+
 else:
   st.header("Te encuentas en la ventana de ejercicio 4")
 
