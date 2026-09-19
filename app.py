@@ -196,9 +196,9 @@ elif modulos == "Ejercicio 3":
         segundos = resultado_tiempo["tiempo_segundos"]
 
         if "tiempo" not in st.session_state or st.session_state.tiempo.shape[1] != 2:
-          st.session_state.tiempo = np.empty((0, 2), dtype=object)
+          st.session_state.tiempo = np.empty((0, 4), dtype=object)
         
-        nuevo_registro = np.array([[minutos, segundos]], dtype=object)
+        nuevo_registro = np.array([[tamano_archivo, velocidad, minutos, segundos]], dtype=object)
         st.session_state.tiempo = np.vstack((st.session_state.tiempo, nuevo_registro))
     
         st.write(f"El tiempo de transferencia en minutos: {minutos}")
@@ -214,15 +214,17 @@ elif modulos == "Ejercicio 3":
   st.subheader("Tabla histórica de resultados obtenidos")
   
   if st.session_state.tiempo.shape[0] > 0:
-    df_mostrar = pd.DataFrame(st.session_state.tiempo,columns=["Tiempo en Minutos", "Tiempo en Segundos"],)
+    df_mostrar = pd.DataFrame(st.session_state.tiempo,columns=["Tamaño (MB)","Velocidad (MBPS)","Tiempo en Minutos", "Tiempo en Segundos"],)
   
     # 3. Formato corregido para NumberColumn
     st.dataframe(
         df_mostrar,
         use_container_width=True,
         column_config={
-              "Tiempo en Minutos": st.column_config.NumberColumn("Tiempo (min)", format="%.2f min"),
-              "Tiempo en Segundos": st.column_config.NumberColumn("Tiempo (seg)", format="%.2f seg"),
+          "Tamaño (MB)": st.column_config.NumberColumn("Tamaño (MB)", format="%.2f MB"),
+          "Velocidad (MBPS)": st.column_config.NumberColumn("Velocidad (MBPS)", format="%.2f MBPS"),
+          "Tiempo en Minutos": st.column_config.NumberColumn("Tiempo (min)", format="%.2f min"),
+          "Tiempo en Segundos": st.column_config.NumberColumn("Tiempo (seg)", format="%.2f seg"),
           },
       )
   else:
