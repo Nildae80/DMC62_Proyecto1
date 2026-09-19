@@ -189,6 +189,8 @@ elif modulos == "Ejercicio 3":
     if st.button("Ejecutar", type="primary"):
       if velocidad <= 0:
         st.error("La velocidad de transferencia debe ser mayor a 0.")
+      if tamano_archivo <= 0:
+        st.error("El tamaño del archivo debe ser mayor a 0.")
       else:
         resultado_tiempo = lf.calcular_tiempo_transferencia_archivo(tamano_archivo, velocidad)
     
@@ -201,8 +203,8 @@ elif modulos == "Ejercicio 3":
         nuevo_registro = np.array([[tamano_archivo, velocidad, minutos, segundos]], dtype=object)
         st.session_state.tiempo = np.vstack((st.session_state.tiempo, nuevo_registro))
     
-        st.write(f"El tiempo de transferencia en minutos: {minutos}")
-        st.write(f"El tiempo de transferencia en segundos: {segundos}")
+        st.write(f"El tiempo de transferencia en: {minutos} minutos")
+        st.write(f"El tiempo de transferencia en: {segundos} segundos")
         st.success("¡Cálculo realizado y guardado con éxito!")
   
   elif tipo_Funcion == "Otro":
