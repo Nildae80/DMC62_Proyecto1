@@ -114,7 +114,7 @@ elif modulos == "Ejercicio 1":
         delta="+"
       )
   else:
-    st.info("Aún no hay productos registrados.")
+    st.info("Aún no hay movimientos registrados.")
 
 
 
@@ -152,9 +152,10 @@ elif modulos == "Ejercicio 2":
       st.success(f"¡Producto '{nombre}' agregado con éxito!.")
   
   #Mostrar los datos guardados en una tabla
-  st.subheader("Inventario")
+  
   
   if st.session_state.inventario.shape[0] > 0:
+      st.subheader("Inventario de productos")
       # Convertimos el arreglo de NumPy a DataFrame solo para visualizarlo en la UI
       df_mostrar = pd.DataFrame(
           st.session_state.inventario,
