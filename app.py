@@ -4,14 +4,14 @@ import pandas as pd
 import libreria_funciones_proyecto1 as lf
 
 st.sidebar.title("Menú lateral")
-st.image("DMC.png", width=200)
+imagen = st.sidebar.image("Python_logo.png", width=200)
 modulos = st.sidebar.selectbox("Selecciones el modulo",["Home","Ejercicio 1","Ejercicio 2","Ejercicio 3","Ejercicio 4"])
 
 # Creamos 3 columnas (la central es más ancha para dar espacio)
 col1, col2, col3 = st.columns([1, 2, 1])
 
 with col2:
-  st.image("DMC.png", width=200)
+  st.image("Python_logo.png", width=200)
   
 st.title("PROYECTO 1")
 st.title("APLICACIÓN EN STREAMLIT")
