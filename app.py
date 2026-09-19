@@ -11,9 +11,10 @@ modulos = st.sidebar.selectbox("Selecciones el modulo",["Home","Ejercicio 1","Ej
 col1, col2, col3 = st.columns([1, 2, 1])
 
 with col2:
-  st.image("DMC.png", width=300)
-  st.title("PROYECTO 1")
-  st.title("APLICACIÓN EN STREAMLIT")
+  st.image("DMC.png", width=100)
+  
+st.title("PROYECTO 1")
+st.title("APLICACIÓN EN STREAMLIT")
 
 if modulos == "Home":
   st.header("Elaborado por: Nilda Echevarria")
