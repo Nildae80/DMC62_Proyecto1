@@ -7,10 +7,15 @@ st.sidebar.title("Menú lateral")
 
 modulos = st.sidebar.selectbox("Selecciones el modulo",["Home","Ejercicio 1","Ejercicio 2","Ejercicio 3","Ejercicio 4"])
 
-if modulos == "Home":
-  st.image("DMC.png", width = 300)
+# Creamos 3 columnas (la central es más ancha para dar espacio)
+col1, col2, col3 = st.columns([1, 2, 1])
+
+with col2:
+  st.image("DMC.png", width=300)
   st.title("PROYECTO 1")
   st.title("APLICACIÓN EN STREAMLIT")
+
+if modulos == "Home":
   st.header("Elaborado por: Nilda Echevarria")
   st.subheader("Modulo 1")
   st.write("Información general del estudiante: ")
@@ -177,8 +182,8 @@ elif modulos == "Ejercicio 3":
 
   if st.button("Ejecutar",type="primary"):
     resultado_tiempo =  lf.calcular_tiempo_transferencia_archivo(tamano_archivo,velocidad)
-    st.write(f"El tiempo de transferencia es : {resultado_tiempo["tiempo_minutos"]} : {resultado_tiempo["tiempo_segundos"]}")
-    #st.write(f"El tiempo de transferencia es: {resultado_tiempo["tiempo_segundos"]}")
+    st.write(f"El tiempo de transferencia en minutos: {resultado_tiempo["tiempo_minutos"]}")
+    st.write(f"El tiempo de transferencia en segundos: {resultado_tiempo["tiempo_segundos"]}")
 
 else:
   st.header("Te encuentas en la ventana de ejercicio 4")
