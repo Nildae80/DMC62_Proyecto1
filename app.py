@@ -178,9 +178,9 @@ elif modulos == "Ejercicio 3":
   
   st.subheader("Formulario de registro para calcular el tiempo de transferencia de un archivo")
 
-  tipo_Funcion = st.selectbox("Selecciones el tipo de funcion",["Funcion1","Ninguno"],index=None,placeholder="Seleccione tipo de movimiento...")
+  tipo_Funcion = st.selectbox("Selecciones el tipo de funcion",["Calcular tiempo de transferencia de archivo","Otro"],index=None,placeholder="Seleccione tipo de movimiento...")
   
-  if tipo_Funcion == "Funcion1":
+  if tipo_Funcion == "Calcular tiempo de transferencia de archivo":
     tamano_archivo = float(st.number_input("Ingresa el tamaño del archivo (MB) ", value=0.00, min_value=0.0, step=0.1, format="%.2f"))
     velocidad = float(st.number_input("Ingresa la velocidad de transferencia (MBPS) ", value=0.00, min_value=0.0, step=0.1, format="%.2f"))
       
@@ -188,7 +188,7 @@ elif modulos == "Ejercicio 3":
       resultado_tiempo =  lf.calcular_tiempo_transferencia_archivo(tamano_archivo,velocidad)
       st.write(f"El tiempo de transferencia en minutos: {resultado_tiempo["tiempo_minutos"]}")
       st.write(f"El tiempo de transferencia en segundos: {resultado_tiempo["tiempo_segundos"]}")
-  elif tipo_Funcion == "Ninguno":
+  elif tipo_Funcion == "Otro":
     st.write(f"No se tiene implementado otras funciones")
   else:
     st.write(f"Elija una opción.")
