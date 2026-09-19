@@ -4,7 +4,7 @@ import pandas as pd
 import libreria_funciones_proyecto1 as lf
 
 st.sidebar.title("Menú lateral")
-
+st.image("DMC.png", width=200)
 modulos = st.sidebar.selectbox("Selecciones el modulo",["Home","Ejercicio 1","Ejercicio 2","Ejercicio 3","Ejercicio 4"])
 
 # Creamos 3 columnas (la central es más ancha para dar espacio)
