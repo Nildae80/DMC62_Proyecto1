@@ -213,7 +213,7 @@ elif modulos == "Ejercicio 3":
       )
    
   else:
-      st.info("Aún no hay productos registrados.")
+      st.info("Aún no hay ejecuciones registrados.")
 
 ####
 
