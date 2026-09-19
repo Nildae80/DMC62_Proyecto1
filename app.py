@@ -186,6 +186,10 @@ elif modulos == "Ejercicio 3":
       
     if st.button("Ejecutar",type="primary"):
       resultado_tiempo =  lf.calcular_tiempo_transferencia_archivo(tamano_archivo,velocidad)
+
+      nuevo_registro = np.array([[minutos, segundos]], dtype=object)
+      st.session_state.tiempo = np.vstack((st.session_state.tiempo, nuevo_registro))
+      
       st.write(f"El tiempo de transferencia en minutos: {resultado_tiempo["tiempo_minutos"]}")
       st.write(f"El tiempo de transferencia en segundos: {resultado_tiempo["tiempo_segundos"]}")
   elif tipo_Funcion == "Otro":
