@@ -238,8 +238,10 @@ elif modulos == "Ejercicio 3":
 
 
 
-
 else:
   st.header("Te encuentas en la ventana de ejercicio 4")
+  st.write("En este ejercicio se usara clases desde una librería externa con CRUD.")
+
+
 
 
