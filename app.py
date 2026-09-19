@@ -183,21 +183,24 @@ elif modulos == "Ejercicio 3":
   tipo_Funcion = st.selectbox("Seleccione el tipo de función",["Calcular tiempo de transferencia de archivo", "Otro"],index=None,placeholder="Seleccione tipo de movimiento...",)
   
   if tipo_Funcion == "Calcular tiempo de transferencia de archivo": 
-    tamano_archivo = float(st.number_input("Ingresa el tamaño del archivo (MB)",value=0.00,min_value=0.0,step=0.1,format="%.2f"))
-    velocidad = float(st.number_input("Ingresa la velocidad de transferencia (MBPS)",value=0.00,min_value=0.0,step=0.1,format="%.2f"))
+    tamano_archivo = float(st.number_input("Ingresa el tamaño del archivo (MB)",value=0.00,min_value=0.0,step=0.1,format="%.2f",))
+    velocidad = float(st.number_input("Ingresa la velocidad de transferencia (MBPS)",value=0.00,min_value=0.0,step=0.1,format="%.2f",))
   
     if st.button("Ejecutar", type="primary"):
-      resultado_tiempo = lf.calcular_tiempo_transferencia_archivo(tamano_archivo, velocidad)
-  
-      minutos = resultado_tiempo["tiempo_minutos"]
-      segundos = resultado_tiempo["tiempo_segundos"]
-  
-      # 2. AQUÍ SE GUARDAN LOS RESULTADOS EN EL ARREGLO
-      nuevo_registro = np.array([[minutos, segundos]], dtype=object)
-      st.session_state.tiempo = np.vstack((st.session_state.tiempo, nuevo_registro))
-  
-      st.write(f"El tiempo de transferencia en minutos: {minutos}")
-      st.write(f"El tiempo de transferencia en segundos: {segundos}")
+      if velocidad <= 0:
+        st.error("La velocidad de transferencia debe ser mayor a 0.")
+      else:
+        resultado_tiempo = lf.calcular_tiempo_transferencia_archivo(tamano_archivo, velocidad)
+    
+        minutos = resultado_tiempo["tiempo_minutos"]
+        segundos = resultado_tiempo["tiempo_segundos"]
+    
+        nuevo_registro = np.array([[minutos, segundos]], dtype=object)
+        st.session_state.tiempo = np.vstack((st.session_state.tiempo, nuevo_registro))
+    
+        st.write(f"El tiempo de transferencia en minutos: {minutos}")
+        st.write(f"El tiempo de transferencia en segundos: {segundos}")
+        st.success("¡Cálculo realizado y guardado con éxito!")
   
   elif tipo_Funcion == "Otro":
     st.write("No se tiene implementado otras funciones")
@@ -220,7 +223,7 @@ elif modulos == "Ejercicio 3":
           },
       )
   else:
-      st.info("Aún no hay ejecuciones registradas.")
+    st.info("Aún no hay ejecuciones registradas.")
 
 ####
 
