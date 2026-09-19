@@ -274,7 +274,7 @@ else:
             st.success(f"Servidor '{nombre}' registrado con éxito.")
             st.rerun()
   
-            except ValueError as err:st.error(f"Error de validación en la clase: {err}")
+          except ValueError as err:st.error(f"Error de validación en la clase: {err}")
   
   # LEER
   elif opcion == "Ver Servidores":
