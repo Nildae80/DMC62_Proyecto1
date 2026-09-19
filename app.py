@@ -176,7 +176,9 @@ elif modulos == "Ejercicio 3":
   velocidad = float(st.number_input("Ingresa la velocidad de transferencia (MBPS) ", value=0.00, min_value=0.0, step=0.1, format="%.2f"))
 
   resultado_tiempo =  lf.calcular_tiempo_transferencia_archivo(tamano_archivo,velocidad)
-  st.write("El resultado de tu valor futuro de inversion es: ",round(resultado_tiempo,2))
+  st.write(f"El resultado de tu valor futuro de inversion es: ",round(resultado_tiempo,2))
+          "tiempo_segundos": round(tiempo_segundos, 2),
+        "tiempo_minutos": round(tiempo_minutos, 2)
   
 
 else:
