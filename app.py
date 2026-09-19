@@ -240,8 +240,267 @@ elif modulos == "Ejercicio 3":
 
 else:
   st.header("Te encuentas en la ventana de ejercicio 4")
-  st.write("En este ejercicio se usara clases desde una librería externa con CRUD.")
-
+  st.write("En este ejercicio se usara clases desde una librería externa con CRUD - Gestión e inspección de estado de servidores mediante la clase `Servidor`.")
+ 
+  # 1. Inicialización en st.session_state usando un arreglo de NumPy (8 columnas)
+  # Columnas: [Nombre, T. Total (h), T. Caída (h), Almacenamiento Total (GB), Almacenamiento Usado (GB), Disponibilidad (%), Uso Almacenamiento (%), Estado]
+  if "servidores" not in st.session_state or st.session_state.servidores.shape[1] != 8:
+      st.session_state.servidores = np.empty((0, 8), dtype=object)
+  
+  # Pestañas para organizar las operaciones CRUD
+  tab_crear, tab_leer, tab_actualizar, tab_eliminar = st.tabs(
+      ["➕ Crear", "📋 Leer", "✏️ Actualizar", "🗑️ Eliminar"]
+  )
+  
+  # ---------------------------------------------------------
+  # C - CREAR (Create)
+  # ---------------------------------------------------------
+  with tab_crear:
+      st.subheader("Registrar nuevo servidor")
+  
+      with st.form("form_crear_servidor", clear_on_submit=True):
+          nombre = st.text_input("Nombre del Servidor", placeholder="Ej. Servidor-BD-01")
+  
+          col1, col2 = st.columns(2)
+          with col1:
+              tiempo_total = st.number_input(
+                  "Tiempo Total de Operación (horas)",
+                  min_value=1.0,
+                  value=720.0,
+                  step=10.0,
+                  format="%.2f",
+              )
+              tiempo_caida = st.number_input(
+                  "Tiempo de Caída (horas)",
+                  min_value=0.0,
+                  value=5.0,
+                  step=0.5,
+                  format="%.2f",
+              )
+  
+          with col2:
+              alm_total = st.number_input(
+                  "Almacenamiento Total (GB)",
+                  min_value=1.0,
+                  value=1000.0,
+                  step=50.0,
+                  format="%.2f",
+              )
+              alm_usado = st.number_input(
+                  "Almacenamiento Usado (GB)",
+                  min_value=0.0,
+                  value=400.0,
+                  step=10.0,
+                  format="%.2f",
+              )
+  
+          btn_guardar = st.form_submit_button("Guardar Servidor", type="primary")
+  
+          if btn_guardar:
+              if not nombre.strip():
+                  st.error("Por favor ingrese un nombre para el servidor.")
+              else:
+                  # Capturamos excepciones de validación de la clase (p.ej. caída > total)
+                  try:
+                      # Instanciar el objeto Servidor
+                      srv = Servidor(
+                          nombre=nombre.strip(),
+                          tiempo_total_h=tiempo_total,
+                          tiempo_caida_h=tiempo_caida,
+                          almacenamiento_total_gb=alm_total,
+                          almacenamiento_usado_gb=alm_usado,
+                      )
+  
+                      # Obtener resumen calculado por los métodos de la clase
+                      resumen = srv.resumen()
+  
+                      # Estructurar fila para guardar
+                      nueva_fila = np.array(
+                          [
+                              [
+                                  srv.nombre,
+                                  srv.tiempo_total_h,
+                                  srv.tiempo_caida_h,
+                                  srv.almacenamiento_total_gb,
+                                  srv.almacenamiento_usado_gb,
+                                  resumen["disponibilidad_pct"],
+                                  resumen["uso_almacenamiento_pct"],
+                                  resumen["estado"],
+                              ]
+                          ],
+                          dtype=object,
+                      )
+  
+                      # Apilar en la matriz de NumPy
+                      st.session_state.servidores = np.vstack(
+                          (st.session_state.servidores, nueva_fila)
+                      )
+  
+                      st.success(f"Servidor '{nombre}' registrado con éxito.")
+                      st.rerun()
+  
+                  except ValueError as err:
+                      st.error(f"Error de validación en la clase: {err}")
+  
+  # ---------------------------------------------------------
+  # R - LEER (Read)
+  # ---------------------------------------------------------
+  with tab_leer:
+      st.subheader("Listado e historial de servidores")
+  
+      if st.session_state.servidores.shape[0] > 0:
+          df_servidores = pd.DataFrame(
+              st.session_state.servidores,
+              columns=[
+                  "Servidor",
+                  "Tiempo Total (h)",
+                  "Tiempo Caída (h)",
+                  "Almacenamiento Total (GB)",
+                  "Almacenamiento Usado (GB)",
+                  "Disponibilidad (%)",
+                  "Uso Almacenamiento (%)",
+                  "Estado",
+              ],
+          )
+  
+          st.dataframe(
+              df_servidores,
+              use_container_width=True,
+              column_config={
+                  "Disponibilidad (%)": st.column_config.NumberColumn(
+                      format="%.2f %%"
+                  ),
+                  "Uso Almacenamiento (%)": st.column_config.NumberColumn(
+                      format="%.2f %%"
+                  ),
+                  "Tiempo Total (h)": st.column_config.NumberColumn(
+                      format="%.2f h"
+                  ),
+                  "Tiempo Caída (h)": st.column_config.NumberColumn(
+                      format="%.2f h"
+                  ),
+                  "Almacenamiento Total (GB)": st.column_config.NumberColumn(
+                      format="%.2f GB"
+                  ),
+                  "Almacenamiento Usado (GB)": st.column_config.NumberColumn(
+                      format="%.2f GB"
+                  ),
+              },
+          )
+      else:
+          st.info("Aún no hay servidores registrados.")
+  
+  # ---------------------------------------------------------
+  # U - ACTUALIZAR (Update)
+  # ---------------------------------------------------------
+  with tab_actualizar:
+      st.subheader("Modificar datos de un servidor existente")
+  
+      if st.session_state.servidores.shape[0] > 0:
+          nombres_servidores = st.session_state.servidores[:, 0].tolist()
+          servidor_seleccionado = st.selectbox(
+              "Seleccione el servidor a editar", nombres_servidores
+          )
+  
+          # Buscar el índice del registro
+          idx = np.where(st.session_state.servidores[:, 0] == servidor_seleccionado)[0][0]
+          srv_actual = st.session_state.servidores[idx]
+  
+          with st.form("form_actualizar_servidor"):
+              nuevo_nombre = st.text_input("Nombre", value=str(srv_actual[0]))
+  
+              col1, col2 = st.columns(2)
+              with col1:
+                  nuevo_t_total = st.number_input(
+                      "Tiempo Total (h)",
+                      min_value=1.0,
+                      value=float(srv_actual[1]),
+                      step=10.0,
+                      format="%.2f",
+                  )
+                  nuevo_t_caida = st.number_input(
+                      "Tiempo Caída (h)",
+                      min_value=0.0,
+                      value=float(srv_actual[2]),
+                      step=0.5,
+                      format="%.2f",
+                  )
+  
+              with col2:
+                  nuevo_alm_total = st.number_input(
+                      "Almacenamiento Total (GB)",
+                      min_value=1.0,
+                      value=float(srv_actual[3]),
+                      step=50.0,
+                      format="%.2f",
+                  )
+                  nuevo_alm_usado = st.number_input(
+                      "Almacenamiento Usado (GB)",
+                      min_value=0.0,
+                      value=float(srv_actual[4]),
+                      step=10.0,
+                      format="%.2f",
+                  )
+  
+              btn_actualizar = st.form_submit_button("Actualizar Registro", type="primary")
+  
+              if btn_actualizar:
+                  try:
+                      # Instanciar el objeto nuevamente para recalcular métodos
+                      srv_editado = Servidor(
+                          nombre=nuevo_nombre.strip(),
+                          tiempo_total_h=nuevo_t_total,
+                          tiempo_caida_h=nuevo_t_caida,
+                          almacenamiento_total_gb=nuevo_alm_total,
+                          almacenamiento_usado_gb=nuevo_alm_usado,
+                      )
+  
+                      resumen_editado = srv_editado.resumen()
+  
+                      # Actualizar directamente la fila en el arreglo de NumPy
+                      st.session_state.servidores[idx] = [
+                          srv_editado.nombre,
+                          srv_editado.tiempo_total_h,
+                          srv_editado.tiempo_caida_h,
+                          srv_editado.almacenamiento_total_gb,
+                          srv_editado.almacenamiento_usado_gb,
+                          resumen_editado["disponibilidad_pct"],
+                          resumen_editado["uso_almacenamiento_pct"],
+                          resumen_editado["estado"],
+                      ]
+  
+                      st.success("Servidor actualizado correctamente.")
+                      st.rerun()
+  
+                  except ValueError as err:
+                      st.error(f"Error de validación al actualizar: {err}")
+      else:
+          st.info("No hay servidores disponibles para actualizar.")
+  
+  # ---------------------------------------------------------
+  # D - ELIMINAR (Delete)
+  # ---------------------------------------------------------
+  with tab_eliminar:
+      st.subheader("Eliminar servidor")
+  
+      if st.session_state.servidores.shape[0] > 0:
+          nombres_del = st.session_state.servidores[:, 0].tolist()
+          srv_a_eliminar = st.selectbox(
+              "Seleccione el servidor a eliminar", nombres_del
+          )
+  
+          if st.button("Eliminar Servidor", type="primary"):
+              idx_del = np.where(st.session_state.servidores[:, 0] == srv_a_eliminar)[0][0]
+  
+              # Eliminar la fila del arreglo usando np.delete
+              st.session_state.servidores = np.delete(
+                  st.session_state.servidores, idx_del, axis=0
+              )
+  
+              st.success(f"Servidor '{srv_a_eliminar}' eliminado exitosamente.")
+              st.rerun()
+      else:
+          st.info("No hay servidores disponibles para eliminar.")
 
 
 
