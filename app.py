@@ -1,8 +1,8 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-import libreria_funciones_proyecto1 as lf
-from libreria_clases_proyecto1 import Servidor
+
+from libreria_funciones_proyecto1 import Servidor
 
 st.sidebar.title("Especialización en Python for Analytics")
 imagen = st.sidebar.image("Python_logo.png", width=200)
@@ -14,7 +14,7 @@ col1, col2, col3 = st.columns([1, 2, 1])
 
 with col2:
   st.image("Python_logo.png", width=300)
-  st.title("PROYECTO 1")
+  st.title("PROYECTO 1 📋")
   
 if modulos == "Home":
   st.header("Proyecto Aplicado en Streamlit – Fundamentos de Programación")
@@ -25,7 +25,7 @@ if modulos == "Home":
   st.write("Breve descripción del proyecto: Este proyecto representa la primera aplicación práctica del módulo y permitirá evidenciar el uso de estructuras de datos, widgets, funciones, clases y lógica de programación en una interfaz interactiva.")
   st.write("Tecnologías utilizadas: GIT, Stramlit")
 
-
+##EJERCICIO 1
 elif modulos == "Ejercicio 1":
   st.header("Te encuentas en la ventana del Ejercicio 1")
   st.write("En este ejercicio se deberá desarrollar un pequeño módulo para registrar movimientos financieros en una lista vacía.")
@@ -33,13 +33,13 @@ elif modulos == "Ejercicio 1":
   if "movimientos" not in st.session_state:
     st.session_state.movimientos = []
 
-  st.subheader("Formulario de Registra tu Movimientos")
-  
+  st.subheader("Formulario de Registra tu Movimientos ✏️")
+    
   concepto = st.text_input("Ingresa el concepto del movimiento")
   tipo_Movimiento = st.selectbox("Selecciones el tipo de movimiento",["Ingreso","Gasto"],index=None,placeholder="Seleccione tipo de movimiento...")
   importe = float(st.number_input("Ingresa el importe del movimiento S/ ", value=0.00, min_value=0.0, step=0.5, format="%.2f"))
   
-  if st.button("Guardar"):
+  if st.button("Guardar ➕"):
     ingresos_total = 0
     gastos_total = 0
 
@@ -114,7 +114,7 @@ elif modulos == "Ejercicio 1":
     st.info("Aún no hay movimientos registrados.")
 
 
-
+##EJERCICIO 2
 elif modulos == "Ejercicio 2":
   st.header("Te encuentas en la ventana del Ejercicio 2")
   st.write("En este ejercicio se deberá crear un formulario para registrar información usando arreglos de NumPy. La idea es registrar productos, ventas o registros similares mediante widgets y botones.")
@@ -122,14 +122,14 @@ elif modulos == "Ejercicio 2":
   if "inventario" not in st.session_state:
     st.session_state.inventario = np.empty((0, 5), dtype=object) # arreglo vacío de 2 dimensiones con 5 columnas
   
-  st.subheader("Formulario de Registro de Productos")
+  st.subheader("Formulario de Registro de Productos ✏️")
   
   nombre = st.text_input("Ingresa el nombre del Producto")
   categoria = st.selectbox("Selecciona la categoría del producto", ["Abarrotes","Bebidas","Mascotas","Libreria"],index=None,placeholder="Seleccione la categoría...")
   precio = float(st.number_input("Ingresa el precio de cada producto (S/) ", value=0.00, min_value=0.0, step=0.5, format="%.2f"))
   cantidad = int(st.number_input("Cantidad", min_value=1, step=1))
   
-  if st.button("Guardar"):
+  if st.button("Guardar ➕"):
     if nombre.strip() == "":
       st.warning("Por favor, ingresa un producto antes de presionar el botón.")
     elif categoria == None:
@@ -149,8 +149,6 @@ elif modulos == "Ejercicio 2":
       st.success(f"¡Producto '{nombre}' agregado con éxito!.")
   
   #Mostrar los datos guardados en una tabla
-  
-  
   if st.session_state.inventario.shape[0] > 0:
       st.subheader("Inventario de productos")
       # Convertimos el arreglo de NumPy a DataFrame solo para visualizarlo en la UI
@@ -166,16 +164,14 @@ elif modulos == "Ejercicio 2":
               "Precio": st.column_config.NumberColumn("Precio", format="S/ %.2f"),
               "Total": st.column_config.NumberColumn("Total", format="S/ %.2f"),
           },
-      )
-  
+      )  
       total_general = np.sum(st.session_state.inventario[:, 4].astype(float))
-      st.metric("Importe Total Acumulada", f"S/ {total_general:,.2f}")
-  
+      st.metric("Importe Total Acumulada", f"S/ {total_general:,.2f}")  
   else:
       st.info("Aún no hay productos registrados.")
 
 
-
+##EJERCICIO 3
 elif modulos == "Ejercicio 3":
   st.header("Te encuentras en la ventana del Ejercicio 3")
   st.write("En este ejercicio se usará funciones desde una librería externa.")
@@ -184,7 +180,7 @@ elif modulos == "Ejercicio 3":
   if "tiempo" not in st.session_state:
     st.session_state.tiempo = np.empty((0, 2), dtype=object)
   
-  st.subheader("Formulario de registro para calcular el tiempo de transferencia de un archivo")
+  st.subheader("Formulario de registro para calcular el tiempo de transferencia de un archivo con funciones")
   
   tipo_Funcion = st.selectbox("Seleccione el tipo de función",["Calcular tiempo de transferencia de archivo", "Otro"],index=None,placeholder="Seleccione tipo de movimiento...",)
   
@@ -223,9 +219,7 @@ elif modulos == "Ejercicio 3":
     df_mostrar = pd.DataFrame(st.session_state.tiempo,columns=["Tamaño (MB)","Velocidad (MBPS)","Tiempo en Minutos", "Tiempo en Segundos"],)
   
     # 3. Formato corregido para NumberColumn
-    st.dataframe(
-        df_mostrar,
-        use_container_width=True,
+    st.dataframe(df_mostrar,use_container_width=True,
         column_config={
           "Tamaño (MB)": st.column_config.NumberColumn("Tamaño (MB)", format="%.2f MB"),
           "Velocidad (MBPS)": st.column_config.NumberColumn("Velocidad (MBPS)", format="%.2f MBPS"),
@@ -237,216 +231,95 @@ elif modulos == "Ejercicio 3":
     st.info("Aún no hay ejecuciones registradas.")
 
 
-
+##EJERCICIO 4
 else:
   st.header("Te encuentas en la ventana de ejercicio 4")
   st.write("En este ejercicio se usara clases desde una librería externa con CRUD - Gestión e inspección de estado de servidores mediante la clase `Servidor`.")
  
-  # 1. Inicialización en st.session_state usando un arreglo de NumPy (8 columnas)
-  # Columnas: [Nombre, T. Total (h), T. Caída (h), Almacenamiento Total (GB), Almacenamiento Usado (GB), Disponibilidad (%), Uso Almacenamiento (%), Estado]
+  # 1. Inicialización en st.session_state (8 columnas)
   if "servidores" not in st.session_state or st.session_state.servidores.shape[1] != 8:
-      st.session_state.servidores = np.empty((0, 8), dtype=object)
+    st.session_state.servidores = np.empty((0, 8), dtype=object)
   
-  # Pestañas para organizar las operaciones CRUD
-  tab_crear, tab_leer, tab_actualizar, tab_eliminar = st.tabs(
-      ["➕ Crear", "📋 Leer", "✏️ Actualizar", "🗑️ Eliminar"]
-  )
+  # 2. Selección de acción CRUD mediante st.selectbox en el cuerpo principal
+  opcion = st.selectbox("Seleccione la operación que desea realizar:",["Crear Servidor", "Ver Servidores", "Actualizar Servidor", "Eliminar Servidor"])
+  st.divider()
   
-  # ---------------------------------------------------------
-  # C - CREAR (Create)
-  # ---------------------------------------------------------
-  with tab_crear:
-      st.subheader("Registrar nuevo servidor")
+  # CREAR
+  if opcion == "Crear Servidor":
+    st.subheader("Registrar un nuevo servidor")
   
-      with st.form("form_crear_servidor", clear_on_submit=True):
-          nombre = st.text_input("Nombre del Servidor", placeholder="Ej. Servidor-BD-01")
+    with st.form("form_crear_servidor", clear_on_submit=True):
+      nombre = st.text_input("Nombre del Servidor")  
+      tiempo_total = st.number_input("Tiempo Total de Operación (horas)",min_value=1.0,value=0.0,step=10.0,format="%.2f",)
+      tiempo_caida = st.number_input("Tiempo de Caída (horas)",min_value=0.0,value=5.0,step=0.5,format="%.2f",)
+      alm_total = st.number_input("Almacenamiento Total (GB)",min_value=1.0,value=1000.0,step=50.0,format="%.2f",)
+      alm_usado = st.number_input("Almacenamiento Usado (GB)",min_value=0.0,value=400.0,step=10.0,format="%.2f",)
   
-          col1, col2 = st.columns(2)
-          with col1:
-              tiempo_total = st.number_input(
-                  "Tiempo Total de Operación (horas)",
-                  min_value=1.0,
-                  value=720.0,
-                  step=10.0,
-                  format="%.2f",
-              )
-              tiempo_caida = st.number_input(
-                  "Tiempo de Caída (horas)",
-                  min_value=0.0,
-                  value=5.0,
-                  step=0.5,
-                  format="%.2f",
-              )
+      btn_guardar = st.form_submit_button("Guardar Servidor", type="primary")
   
-          with col2:
-              alm_total = st.number_input(
-                  "Almacenamiento Total (GB)",
-                  min_value=1.0,
-                  value=1000.0,
-                  step=50.0,
-                  format="%.2f",
-              )
-              alm_usado = st.number_input(
-                  "Almacenamiento Usado (GB)",
-                  min_value=0.0,
-                  value=400.0,
-                  step=10.0,
-                  format="%.2f",
-              )
+      if btn_guardar:
+        if not nombre.strip():
+          st.error("Por favor ingrese un nombre para el servidor.")
+        else:
+          try:
+            # Instanciación de la clase externa
+            srv = Servidor(nombre=nombre.strip(),tiempo_total_h=tiempo_total,tiempo_caida_h=tiempo_caida,almacenamiento_total_gb=alm_total,almacenamiento_usado_gb=alm_usado,)
   
-          btn_guardar = st.form_submit_button("Guardar Servidor", type="primary")
+            resumen = srv.resumen()
   
-          if btn_guardar:
-              if not nombre.strip():
-                  st.error("Por favor ingrese un nombre para el servidor.")
-              else:
-                  # Capturamos excepciones de validación de la clase (p.ej. caída > total)
-                  try:
-                      # Instanciar el objeto Servidor
-                      srv = Servidor(
-                          nombre=nombre.strip(),
-                          tiempo_total_h=tiempo_total,
-                          tiempo_caida_h=tiempo_caida,
-                          almacenamiento_total_gb=alm_total,
-                          almacenamiento_usado_gb=alm_usado,
-                      )
+            nueva_fila = np.array([[srv.nombre,srv.tiempo_total_h,srv.tiempo_caida_h,srv.almacenamiento_total_gb,srv.almacenamiento_usado_gb,resumen["disponibilidad_pct"],resumen["uso_almacenamiento_pct"],resumen["estado"],]],dtype=object,)
   
-                      # Obtener resumen calculado por los métodos de la clase
-                      resumen = srv.resumen()
+            st.session_state.servidores = np.vstack((st.session_state.servidores, nueva_fila))
   
-                      # Estructurar fila para guardar
-                      nueva_fila = np.array(
-                          [
-                              [
-                                  srv.nombre,
-                                  srv.tiempo_total_h,
-                                  srv.tiempo_caida_h,
-                                  srv.almacenamiento_total_gb,
-                                  srv.almacenamiento_usado_gb,
-                                  resumen["disponibilidad_pct"],
-                                  resumen["uso_almacenamiento_pct"],
-                                  resumen["estado"],
-                              ]
-                          ],
-                          dtype=object,
-                      )
+            st.success(f"Servidor '{nombre}' registrado con éxito.")
+            st.rerun()
   
-                      # Apilar en la matriz de NumPy
-                      st.session_state.servidores = np.vstack(
-                          (st.session_state.servidores, nueva_fila)
-                      )
+            except ValueError as err:st.error(f"Error de validación en la clase: {err}")
   
-                      st.success(f"Servidor '{nombre}' registrado con éxito.")
-                      st.rerun()
-  
-                  except ValueError as err:
-                      st.error(f"Error de validación en la clase: {err}")
-  
-  # ---------------------------------------------------------
-  # R - LEER (Read)
-  # ---------------------------------------------------------
-  with tab_leer:
-      st.subheader("Listado e historial de servidores")
+  # LEER
+  elif opcion == "Ver Servidores":
+      st.subheader("Listado de servidores")
   
       if st.session_state.servidores.shape[0] > 0:
-          df_servidores = pd.DataFrame(
-              st.session_state.servidores,
-              columns=[
-                  "Servidor",
-                  "Tiempo Total (h)",
-                  "Tiempo Caída (h)",
-                  "Almacenamiento Total (GB)",
-                  "Almacenamiento Usado (GB)",
-                  "Disponibilidad (%)",
-                  "Uso Almacenamiento (%)",
-                  "Estado",
-              ],
-          )
+          df_servidores = pd.DataFrame(st.session_state.servidores,
+              columns=["Servidor","Tiempo Total (h)","Tiempo Caída (h)","Almacenamiento Total (GB)","Almacenamiento Usado (GB)","Disponibilidad (%)","Uso Almacenamiento (%)","Estado",],)
   
-          st.dataframe(
-              df_servidores,
-              use_container_width=True,
+          st.dataframe(df_servidores,use_container_width=True,
               column_config={
-                  "Disponibilidad (%)": st.column_config.NumberColumn(
-                      format="%.2f %%"
-                  ),
-                  "Uso Almacenamiento (%)": st.column_config.NumberColumn(
-                      format="%.2f %%"
-                  ),
-                  "Tiempo Total (h)": st.column_config.NumberColumn(
-                      format="%.2f h"
-                  ),
-                  "Tiempo Caída (h)": st.column_config.NumberColumn(
-                      format="%.2f h"
-                  ),
-                  "Almacenamiento Total (GB)": st.column_config.NumberColumn(
-                      format="%.2f GB"
-                  ),
-                  "Almacenamiento Usado (GB)": st.column_config.NumberColumn(
-                      format="%.2f GB"
-                  ),
+                  "Disponibilidad (%)": st.column_config.NumberColumn(format="%.2f %%"),
+                  "Uso Almacenamiento (%)": st.column_config.NumberColumn(format="%.2f %%"),
+                  "Tiempo Total (h)": st.column_config.NumberColumn(format="%.2f h"),
+                  "Tiempo Caída (h)": st.column_config.NumberColumn(format="%.2f h"),
+                  "Almacenamiento Total (GB)": st.column_config.NumberColumn(format="%.2f GB"),
+                  "Almacenamiento Usado (GB)": st.column_config.NumberColumn(format="%.2f GB"),
               },
           )
       else:
           st.info("Aún no hay servidores registrados.")
   
-  # ---------------------------------------------------------
-  # U - ACTUALIZAR (Update)
-  # ---------------------------------------------------------
-  with tab_actualizar:
+  # ACTUALIZAR
+  elif opcion == "Actualizar informacion del Servidor":
       st.subheader("Modificar datos de un servidor existente")
   
       if st.session_state.servidores.shape[0] > 0:
           nombres_servidores = st.session_state.servidores[:, 0].tolist()
-          servidor_seleccionado = st.selectbox(
-              "Seleccione el servidor a editar", nombres_servidores
-          )
+          servidor_seleccionado = st.selectbox("Seleccione el servidor a editar:", nombres_servidores)
   
-          # Buscar el índice del registro
           idx = np.where(st.session_state.servidores[:, 0] == servidor_seleccionado)[0][0]
           srv_actual = st.session_state.servidores[idx]
   
           with st.form("form_actualizar_servidor"):
               nuevo_nombre = st.text_input("Nombre", value=str(srv_actual[0]))
   
-              col1, col2 = st.columns(2)
-              with col1:
-                  nuevo_t_total = st.number_input(
-                      "Tiempo Total (h)",
-                      min_value=1.0,
-                      value=float(srv_actual[1]),
-                      step=10.0,
-                      format="%.2f",
-                  )
-                  nuevo_t_caida = st.number_input(
-                      "Tiempo Caída (h)",
-                      min_value=0.0,
-                      value=float(srv_actual[2]),
-                      step=0.5,
-                      format="%.2f",
-                  )
-  
-              with col2:
-                  nuevo_alm_total = st.number_input(
-                      "Almacenamiento Total (GB)",
-                      min_value=1.0,
-                      value=float(srv_actual[3]),
-                      step=50.0,
-                      format="%.2f",
-                  )
-                  nuevo_alm_usado = st.number_input(
-                      "Almacenamiento Usado (GB)",
-                      min_value=0.0,
-                      value=float(srv_actual[4]),
-                      step=10.0,
-                      format="%.2f",
-                  )
+              nuevo_t_total = st.number_input("Tiempo Total (h)",min_value=1.0,value=float(srv_actual[1]),step=10.0,format="%.2f",)
+              nuevo_t_caida = st.number_input("Tiempo Caída (h)",min_value=0.0,value=float(srv_actual[2]),step=0.5,format="%.2f",)
+              nuevo_alm_total = st.number_input("Almacenamiento Total (GB)",min_value=1.0,value=float(srv_actual[3]),step=50.0,format="%.2f",)
+              nuevo_alm_usado = st.number_input("Almacenamiento Usado (GB)",min_value=0.0,value=float(srv_actual[4]),step=10.0,format="%.2f",)
   
               btn_actualizar = st.form_submit_button("Actualizar Registro", type="primary")
   
               if btn_actualizar:
                   try:
-                      # Instanciar el objeto nuevamente para recalcular métodos
                       srv_editado = Servidor(
                           nombre=nuevo_nombre.strip(),
                           tiempo_total_h=nuevo_t_total,
@@ -457,7 +330,6 @@ else:
   
                       resumen_editado = srv_editado.resumen()
   
-                      # Actualizar directamente la fila en el arreglo de NumPy
                       st.session_state.servidores[idx] = [
                           srv_editado.nombre,
                           srv_editado.tiempo_total_h,
@@ -477,30 +349,21 @@ else:
       else:
           st.info("No hay servidores disponibles para actualizar.")
   
-  # ---------------------------------------------------------
-  # D - ELIMINAR (Delete)
-  # ---------------------------------------------------------
-  with tab_eliminar:
+  # D - ELIMINAR
+  elif opcion == "Eliminar Servidor":
       st.subheader("Eliminar servidor")
   
       if st.session_state.servidores.shape[0] > 0:
-          nombres_del = st.session_state.servidores[:, 0].tolist()
-          srv_a_eliminar = st.selectbox(
-              "Seleccione el servidor a eliminar", nombres_del
-          )
+          nombres_del_srv = st.session_state.servidores[:, 0].tolist()
+          srv_a_eliminar = st.selectbox("Seleccione el servidor a eliminar:", nombres_del_srv)
   
           if st.button("Eliminar Servidor", type="primary"):
               idx_del = np.where(st.session_state.servidores[:, 0] == srv_a_eliminar)[0][0]
   
-              # Eliminar la fila del arreglo usando np.delete
-              st.session_state.servidores = np.delete(
-                  st.session_state.servidores, idx_del, axis=0
-              )
+              st.session_state.servidores = np.delete(st.session_state.servidores, idx_del, axis=0)
   
               st.success(f"Servidor '{srv_a_eliminar}' eliminado exitosamente.")
               st.rerun()
       else:
           st.info("No hay servidores disponibles para eliminar.")
-
-
 
