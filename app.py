@@ -12,14 +12,12 @@ col1, col2, col3 = st.columns([1, 2, 1])
 
 with col2:
   st.image("Python_logo.png", width=300)
+  st.title("PROYECTO 1")
   
-st.title("PROYECTO 1 - APLICACIÓN EN STREAMLIT")
-#st.title("APLICACIÓN EN STREAMLIT")
-
 if modulos == "Home":
-  st.header("Elaborado por: Nilda Echevarria")
-  st.subheader("Modulo 1")
-  st.write("Información general del estudiante: ")
+  st.header("Elaborado por: Nilda Echevarria Meza")
+  st.subheader("Módulo 1 – Python Fundamentals")
+  st.write("Información general del estudiante: Ingeniero de Sistemas, con experiencia en el sector de mas de 5 años")
   st.write("Año: 2026")
   st.write("Breve descripción del proyecto: Este proyecto representa la primera aplicación práctica del módulo y permitirá evidenciar el uso de estructuras de datos, widgets, funciones, clases y lógica de programación en una interfaz interactiva.")
   st.write("Tecnologías utilizadas: GIT, Stramlit")
