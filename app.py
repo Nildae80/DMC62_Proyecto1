@@ -76,7 +76,7 @@ elif modulos == "Ejercicio 1":
     for mov in st.session_state.movimientos
   )
 
-  if st.session_state.movimientos.shape[0] > 0:
+  if len(st.session_state.movimientos) > 0:
     #Creamos el DataFrame
     df_movimientos = pd.DataFrame(
       st.session_state.movimientos, 
