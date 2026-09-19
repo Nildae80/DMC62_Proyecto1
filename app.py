@@ -188,8 +188,10 @@ elif modulos == "Ejercicio 3":
       resultado_tiempo =  lf.calcular_tiempo_transferencia_archivo(tamano_archivo,velocidad)
       st.write(f"El tiempo de transferencia en minutos: {resultado_tiempo["tiempo_minutos"]}")
       st.write(f"El tiempo de transferencia en segundos: {resultado_tiempo["tiempo_segundos"]}")
-  else:
+  elif tipo_Funcion == "Ninguno":
     st.write(f"No se tiene implementado otras funciones")
+  else:
+    st.write(f"Elija una opción.")
 else:
   st.header("Te encuentas en la ventana de ejercicio 4")
 
