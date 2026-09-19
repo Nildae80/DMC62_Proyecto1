@@ -3,9 +3,10 @@ import numpy as np
 import pandas as pd
 import libreria_funciones_proyecto1 as lf
 
-st.sidebar.title("Menú lateral")
+st.sidebar.title("Especialización en Python for Analytics")
 imagen = st.sidebar.image("Python_logo.png", width=200)
 modulos = st.sidebar.selectbox("Selecciones el modulo",["Home","Ejercicio 1","Ejercicio 2","Ejercicio 3","Ejercicio 4"])
+imagen1 = st.sidebar.image("DMC.png", width=100)
 
 # Creamos 3 columnas (la central es más ancha para dar espacio)
 col1, col2, col3 = st.columns([1, 2, 1])
@@ -15,7 +16,8 @@ with col2:
   st.title("PROYECTO 1")
   
 if modulos == "Home":
-  st.header("Elaborado por: Nilda Echevarria Meza")
+  st.header("Proyecto Aplicado en Streamlit – Fundamentos de Programación")
+  st.subheader("Elaborado por: Nilda Echevarria Meza")
   st.subheader("Módulo 1 – Python Fundamentals")
   st.write("Información general del estudiante: Ingeniero de Sistemas, con experiencia en el sector de mas de 5 años")
   st.write("Año: 2026")
