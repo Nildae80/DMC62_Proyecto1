@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+import libreria_funciones_proyecto1 as lf
 
 st.sidebar.title("Menú lateral")
 
@@ -165,6 +166,17 @@ elif modulos == "Ejercicio 2":
 elif modulos == "Ejercicio 3":
   st.header("Te encuentas en la ventana del Ejercicio 3")
   st.write("En este ejercicio se usara funciones desde una librería externa.")
+
+  if "tiempo_transferencia" not in st.session_state:
+    st.session_state.inventario = np.empty((0, 5), dtype=object) # arreglo vacío de 2 dimensiones con 5 columnas
+  
+  st.subheader("Formulario de registro para calcular el tiempo de transferencia de un archivo")
+    
+  tamano_archivo = float(st.number_input("Ingresa el tamaño del archivo (MB) ", value=0.00, min_value=0.0, step=0.1, format="%.2f"))
+  velocidad = float(st.number_input("Ingresa la velocidad de transferencia (MBPS) ", value=0.00, min_value=0.0, step=0.1, format="%.2f"))
+
+  resultado_tiempo = lf.calcular_tiempo_transferencia_archivo(tamano,velocidad)
+  st.write("El resultado de tu valor futuro de inversion es: ",round(resultado_tiempo,2))
   
 
 else:
