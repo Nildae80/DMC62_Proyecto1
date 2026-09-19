@@ -9,7 +9,7 @@ modulos = st.sidebar.selectbox("Selecciones el modulo",["Home","Ejercicio 1","Ej
 cols1, cols2, cols3 = st.sidebar.columns([1, 2, 1])
 
 with cols2:
-  st.sidebar.image("DMC.png", width=100)
+  st.sidebar.image("DMC.png", width=150)
 
 
 # Creamos 3 columnas (la central es más ancha para dar espacio)
