@@ -249,7 +249,7 @@ else:
   if opcion == "Crear Servidor":
     st.subheader("Registrar un nuevo servidor")
   
-    with st.form("form_crear_servidor", clear_on_submit=True):
+    with st.form("form_crear_servidor"):
       nombre = st.text_input("Nombre del Servidor")  
       tiempo_total = float(st.number_input("Tiempo Total de Operación (horas)",min_value=0.0,value=0.0,step=10.0,format="%.2f",))
       tiempo_caida = st.number_input("Tiempo de Caída (horas)",min_value=0.0,value=0.0,step=0.5,format="%.2f",)
