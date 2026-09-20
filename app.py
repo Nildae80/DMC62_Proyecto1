@@ -32,7 +32,7 @@ if modulos == "Home":
       st.markdown("**Correo:** prueba@gmail.com")
   
   with col2:
-      st.subheader("📚 Información Proyecto")
+      st.subheader("📚 Información del Curso")
       st.markdown("**Nombre del módulo:** Programación con Python y Streamlit")
       st.markdown("**Año:** 2026")
   
@@ -44,9 +44,10 @@ if modulos == "Home":
   Esta aplicación fue desarrollada como parte de la evaluación práctica del módulo. Su objetivo principal es proveer una interfaz interactiva y fácil de usar para la gestión de registros mediante operaciones CRUD (Crear, Leer, Actualizar y Eliminar).
   
   **Principales funcionalidades:**
-  - **Registro de Movimientos:** Formulario dinámico para el control de flujo financiero.
-  - **Gestión de Servidores:** Monitoreo e inspección del estado, disponibilidad y uso de almacenamiento de servidores mediante Poo (Programación Orientada a Objetos).
-  - **Visualización de Datos:** Tablas e indicadores clave (métricas) actualizados en tiempo real.
+  - **Flujo de caja con listas:** Formulario dinámico Formulario de Registra tu Movimientos.
+  - **Registro con NumPy, arrays y DataFrame:** Formulario dinámico Registro de Productos.
+  - **Uso de funciones desde una librería externa:** Formulario dinámico de registro para calcular el tiempo de transferencia de un archivo con funciones
+  - **Uso de clases desde una librería externa con CRUD:** Formulario dinámico para el monitoreo e inspección del estado, disponibilidad y uso de almacenamiento de servidores mediante Poo (Programación Orientada a Objetos).
   """)
 
   st.markdown("---")
