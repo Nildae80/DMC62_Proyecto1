@@ -30,7 +30,7 @@ if modulos == "Home":
 elif modulos == "Ejercicio 1":
   st.header("Te encuentas en la ventana del Ejercicio 1")
   st.write("En este ejercicio se deberá desarrollar un pequeño módulo para registrar movimientos financieros en una lista vacía.")
-  
+ with st.form("form_movimientos", clear_on_submit=True):
   if "movimientos" not in st.session_state:
     st.session_state.movimientos = []
 
