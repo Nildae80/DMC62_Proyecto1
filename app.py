@@ -216,7 +216,7 @@ elif modulos == "Ejercicio 3":
   if "tiempo" not in st.session_state:
     st.session_state.tiempo = np.empty((0, 2), dtype=object)
   
-  st.subheader("Formulario de registro para calcular el tiempo de transferencia de un archivo con `funciones`")
+  st.subheader("Formulario de registro para calcular el tiempo de transferencia de un archivo con `funciones` ✏️")
 
   with st.form("form_funcion", clear_on_submit=True):
     tipo_Funcion = st.selectbox("Seleccione el tipo de función",["Calcular tiempo de transferencia de archivo", "Otro"],index=None,placeholder="Seleccione tipo de movimiento...",)
@@ -272,7 +272,7 @@ elif modulos == "Ejercicio 3":
 ##EJERCICIO 4
 else:
   st.header("Te encuentas en la ventana de ejercicio 4")
-  st.write("En este ejercicio se usara clases desde una librería externa con CRUD - Gestión e inspección de estado de servidores mediante la clase `Servidor`.")
+  st.write("En este ejercicio se usara clases desde una librería externa con CRUD - Gestión e inspección de estado de servidores mediante la clase `Servidor`.✏️")
  
   # 1. Inicialización en st.session_state (8 columnas)
   if "servidores" not in st.session_state or st.session_state.servidores.shape[1] != 8:
