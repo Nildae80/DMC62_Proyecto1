@@ -40,7 +40,7 @@ elif modulos == "Ejercicio 1":
   tipo_Movimiento = st.selectbox("Selecciones el tipo de movimiento",["Ingreso","Gasto"],index=None,placeholder="Seleccione tipo de movimiento...")
   importe = float(st.number_input("Ingresa el importe del movimiento S/ ", value=0.00, min_value=0.0, step=0.5, format="%.2f"))
   
-  if st.button("Guardar ➕"):
+  if st.button("Guardar ➕", clear_on_submit=True):
     ingresos_total = 0
     gastos_total = 0
 
@@ -249,7 +249,7 @@ else:
   if opcion == "Crear Servidor":
     st.subheader("Registrar un nuevo servidor")
   
-    with st.form("form_crear_servidor"):
+    with st.form("form_crear_servidor", clear_on_submit=True):
       nombre = st.text_input("Nombre del Servidor")  
       tiempo_total = float(st.number_input("Tiempo Total de Operación (horas)",min_value=0.0,value=0.0,step=10.0,format="%.2f",))
       tiempo_caida = st.number_input("Tiempo de Caída (horas)",min_value=0.0,value=0.0,step=0.5,format="%.2f",)
