@@ -242,11 +242,11 @@ else:
     st.session_state.servidores = np.empty((0, 8), dtype=object)
   
   # 2. Selección de acción CRUD mediante st.selectbox en el cuerpo principal
-  opcion = st.selectbox("Seleccione la operación que desea realizar:",["Crear Servidor", "Ver Servidores", "Actualizar informacion del Servidor", "Eliminar Servidor"])
+  opcion = st.selectbox("Seleccione la operación que desea realizar:",["Crear un nuevo Servidor", "Ver listado de Servidores", "Actualizar informacion del Servidor", "Eliminar un Servidor"])
   st.divider()
   
   # CREAR
-  if opcion == "Crear Servidor":
+  if opcion == "Crear un nuevo Servidor":
     st.subheader("Registrar un nuevo servidor")
   
     with st.form("form_crear_servidor", clear_on_submit=True):
@@ -274,11 +274,9 @@ else:
   
           except ValueError as err:
             st.error(f"Error de validación en la clase: {err}")
-          
-      
-            
+           
   # LEER
-  elif opcion == "Ver Servidores":
+  elif opcion == "Ver listado de Servidores":
       st.subheader("Listado de servidores")
   
       if st.session_state.servidores.shape[0] > 0:
@@ -351,7 +349,7 @@ else:
           st.info("No hay servidores disponibles para actualizar.")
   
   # ELIMINAR
-  elif opcion == "Eliminar Servidor":
+  elif opcion == "Eliminar un Servidor":
       st.subheader("Eliminar servidor")
   
       if st.session_state.servidores.shape[0] > 0:
@@ -359,10 +357,8 @@ else:
           srv_a_eliminar = st.selectbox("Seleccione el servidor a eliminar:", nombres_del_srv)
   
           if st.button("Eliminar Servidor"):
-              srv_eli = np.where(st.session_state.servidores[:, 0] == srv_a_eliminar)[0][0]
-  
-              st.session_state.servidores = np.delete(st.session_state.servidores, srv_eli, axis=0)
-  
+              srv_elim = np.where(st.session_state.servidores[:, 0] == srv_a_eliminar)[0][0]  
+              st.session_state.servidores = np.delete(st.session_state.servidores, srv_elim, axis=0)  
               st.success(f"Servidor '{srv_a_eliminar}' eliminado exitosamente.", icon="✅")
               st.rerun()
       else:
