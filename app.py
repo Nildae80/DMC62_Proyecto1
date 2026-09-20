@@ -30,89 +30,90 @@ if modulos == "Home":
 elif modulos == "Ejercicio 1":
   st.header("Te encuentas en la ventana del Ejercicio 1")
   st.write("En este ejercicio se deberá desarrollar un pequeño módulo para registrar movimientos financieros en una lista vacía.")
- with st.form("form_movimientos", clear_on_submit=True):
+ 
   if "movimientos" not in st.session_state:
     st.session_state.movimientos = []
 
   st.subheader("Formulario de Registra tu Movimientos ✏️")
+
+  with st.form("form_movimientos", clear_on_submit=True):
+    concepto = st.text_input("Ingresa el concepto del movimiento")
+    tipo_Movimiento = st.selectbox("Selecciones el tipo de movimiento",["Ingreso","Gasto"],index=None,placeholder="Seleccione tipo de movimiento...")
+    importe = float(st.number_input("Ingresa el importe del movimiento S/ ", value=0.00, min_value=0.0, step=0.5, format="%.2f"))
     
-  concepto = st.text_input("Ingresa el concepto del movimiento")
-  tipo_Movimiento = st.selectbox("Selecciones el tipo de movimiento",["Ingreso","Gasto"],index=None,placeholder="Seleccione tipo de movimiento...")
-  importe = float(st.number_input("Ingresa el importe del movimiento S/ ", value=0.00, min_value=0.0, step=0.5, format="%.2f"))
+    if st.button("Guardar ➕"):
+      ingresos_total = 0
+      gastos_total = 0
   
-  if st.button("Guardar ➕"):
-    ingresos_total = 0
-    gastos_total = 0
-
-    if concepto.strip() == "":
-      st.warning("Por favor, ingresa un movimiento antes de presionar el botón.")
-    elif tipo_Movimiento == None:
-      st.warning("Por favor, ingresa el tipo de movimiento antes de presionar el botón.")
-    elif importe == 0:
-      st.warning("Por favor, ingresa el importe antes de presionar el botón.")
-    elif importe < 0:
-      st.warning("Por favor, el campo importe no puede ser menor a cero.")
-    else:
-      st.session_state.movimientos.append((concepto,tipo_Movimiento,importe))
-      st.success(f"¡Movimiento '{concepto}' agregado con éxito!")  
-    
-  #Saldo total:
-  saldo_total = sum(
-    mov[2] if mov[1] == "Ingreso" else -mov[2] 
-    for mov in st.session_state.movimientos
-  )
-  
-  #Ingresos total:
-  ingresos_total = sum(
-    mov[2] if mov[1] == "Ingreso" else 0
-    for mov in st.session_state.movimientos
-  )
-
-  #Gastos total:
-  gastos_total = sum(
-    mov[2] if mov[1] == "Gasto" else 0
-    for mov in st.session_state.movimientos
-  )
-
-  if len(st.session_state.movimientos) > 0:
-    #Creamos el DataFrame
-    df_movimientos = pd.DataFrame(
-      st.session_state.movimientos, 
-      columns=["Concepto", "Tipo de Movimiento", "Importe"]
+      if concepto.strip() == "":
+        st.warning("Por favor, ingresa un movimiento antes de presionar el botón.")
+      elif tipo_Movimiento == None:
+        st.warning("Por favor, ingresa el tipo de movimiento antes de presionar el botón.")
+      elif importe == 0:
+        st.warning("Por favor, ingresa el importe antes de presionar el botón.")
+      elif importe < 0:
+        st.warning("Por favor, el campo importe no puede ser menor a cero.")
+      else:
+        st.session_state.movimientos.append((concepto,tipo_Movimiento,importe))
+        st.success(f"¡Movimiento '{concepto}' agregado con éxito!")  
+      
+    #Saldo total:
+    saldo_total = sum(
+      mov[2] if mov[1] == "Ingreso" else -mov[2] 
+      for mov in st.session_state.movimientos
     )
     
-    st.subheader("Listado de movimientos:")
-    #st.write(st.session_state.movimientos)        #Si lo queremos mostrar como una lista
-    #Mostrar en una tabla con dataframe
-    st.dataframe(
-      df_movimientos,
-      use_container_width=True,
-      column_config={"Importe": st.column_config.NumberColumn("Importe", format="S/ %.2f")}
+    #Ingresos total:
+    ingresos_total = sum(
+      mov[2] if mov[1] == "Ingreso" else 0
+      for mov in st.session_state.movimientos
     )
-    st.write("Ingresos total: ", f"{ingresos_total:.2f}")
-    st.write("Gastos total: ", f"{gastos_total:.2f}")
-    st.write("Saldo total: ", f"{saldo_total:.2f}")
   
-    if saldo_total > 0:
-      st.metric(
-        label="Flujo de caja", 
-        value="A FAVOR", 
-        delta="+"
+    #Gastos total:
+    gastos_total = sum(
+      mov[2] if mov[1] == "Gasto" else 0
+      for mov in st.session_state.movimientos
+    )
+  
+    if len(st.session_state.movimientos) > 0:
+      #Creamos el DataFrame
+      df_movimientos = pd.DataFrame(
+        st.session_state.movimientos, 
+        columns=["Concepto", "Tipo de Movimiento", "Importe"]
       )
-    elif saldo_total < 0:
-      st.metric(
-        label="Flujo de caja", 
-        value="EN CONTRA", 
-        delta="-"
+      
+      st.subheader("Listado de movimientos:")
+      #st.write(st.session_state.movimientos)        #Si lo queremos mostrar como una lista
+      #Mostrar en una tabla con dataframe
+      st.dataframe(
+        df_movimientos,
+        use_container_width=True,
+        column_config={"Importe": st.column_config.NumberColumn("Importe", format="S/ %.2f")}
       )
+      st.write("Ingresos total: ", f"{ingresos_total:.2f}")
+      st.write("Gastos total: ", f"{gastos_total:.2f}")
+      st.write("Saldo total: ", f"{saldo_total:.2f}")
+    
+      if saldo_total > 0:
+        st.metric(
+          label="Flujo de caja", 
+          value="A FAVOR", 
+          delta="+"
+        )
+      elif saldo_total < 0:
+        st.metric(
+          label="Flujo de caja", 
+          value="EN CONTRA", 
+          delta="-"
+        )
+      else:
+        st.metric(
+          label="Flujo de caja", 
+          value="CUADRADO", 
+          delta="+"
+        )
     else:
-      st.metric(
-        label="Flujo de caja", 
-        value="CUADRADO", 
-        delta="+"
-      )
-  else:
-    st.info("Aún no hay movimientos registrados.")
+      st.info("Aún no hay movimientos registrados.")
 
 
 ##EJERCICIO 2
