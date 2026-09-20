@@ -270,10 +270,11 @@ else:
   
             st.session_state.servidores = np.vstack((st.session_state.servidores, nueva_fila))
             st.rerun()
+            st.success(f"Servidor '{nombre}' registrado con éxito.")
   
           except ValueError as err:
             st.error(f"Error de validación en la clase: {err}")
-          st.success(f"Servidor '{nombre}' registrado con éxito.")
+          
       
             
   # LEER
