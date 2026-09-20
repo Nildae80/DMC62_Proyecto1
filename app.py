@@ -16,15 +16,24 @@ col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
   st.image("Python_logo.png", width=300)
   st.title("PROYECTO 1 📋")
+  st.markdown("---")
   
 if modulos == "Home":
-  st.header("Proyecto Aplicado en Streamlit – Fundamentos de Programación")
-  st.subheader("Elaborado por: Nilda Echevarria Meza")
-  st.subheader("Módulo 1 – Python Fundamentals")
-  st.write("Información general del estudiante: Ingeniero de Sistemas, con experiencia en el sector de mas de 5 años")
-  st.write("Año: 2026")
-  st.write("Breve descripción del proyecto: Este proyecto representa la primera aplicación práctica del módulo y permitirá evidenciar el uso de estructuras de datos, widgets, funciones, clases y lógica de programación en una interfaz interactiva.")
-  st.write("Tecnologías utilizadas: GIT, Stramlit")
+  st.subheader("Proyecto Aplicado en Streamlit – Fundamentos de Programación")
+  st.subheader("👤**Elaborado por:** Nilda Echevarria Meza")
+  st.subheader("**Módulo 1 – Python Fundamentals**")
+  st.write("**Información general del estudiante:** Ingeniero de Sistemas, con experiencia en el sector de mas de 5 años")
+  st.write("**Año:** 2026")
+  st.markdown("---")
+  st.subheader("📌 Descripción del Proyecto")
+  st.info("""
+  Esta aplicación fue desarrollada como parte de la evaluación práctica del módulo. Su objetivo principal es proveer una interfaz interactiva y fácil de usar para la gestión de registros mediante operaciones CRUD (Crear, Leer, Actualizar y Eliminar).
+  **Principales funcionalidades:**
+  - **Registro de Movimientos:** Formulario dinámico para el control de flujo financiero.
+  - **Gestión de Servidores:** Monitoreo e inspección del estado, disponibilidad y uso de almacenamiento de servidores mediante Poo (Programación Orientada a Objetos).
+  - **Visualización de Datos:** Tablas e indicadores clave (métricas) actualizados en tiempo real.
+  """)
+  st.write("**Tecnologías utilizadas:** GIT, Stramlit")
 
 ##EJERCICIO 1
 elif modulos == "Ejercicio 1":
