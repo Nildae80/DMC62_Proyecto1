@@ -242,7 +242,7 @@ else:
     st.session_state.servidores = np.empty((0, 8), dtype=object)
   
   # 2. Selección de acción CRUD mediante st.selectbox en el cuerpo principal
-  opcion = st.selectbox("Seleccione la operación que desea realizar:",["Crear Servidor", "Ver Servidores", "Actualizar Servidor", "Eliminar Servidor"])
+  opcion = st.selectbox("Seleccione la operación que desea realizar:",["Crear Servidor", "Ver Servidores", "Actualizar informacion del Servidor", "Eliminar Servidor"])
   st.divider()
   
   # CREAR
