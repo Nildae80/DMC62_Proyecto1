@@ -54,6 +54,7 @@ elif modulos == "Ejercicio 1":
       st.warning("Por favor, el campo importe no puede ser menor a cero.")
     else:
       st.session_state.movimientos.append((concepto,tipo_Movimiento,importe))
+      st.rerun()
       st.success(f"¡Movimiento '{concepto}' agregado con éxito!")  
     
   #Saldo total:
@@ -272,12 +273,13 @@ else:
   
             st.session_state.servidores = np.vstack((st.session_state.servidores, nueva_fila))
             
-            st.success(f"Servidor '{nombre}' registrado con éxito.")
             st.rerun()
   
           except ValueError as err:
             st.error(f"Error de validación en la clase: {err}")
-      st.success(f"¡Servidor '{nombre}' agregado con éxito!.")
+            
+      st.success(f"Servidor '{nombre}' registrado con éxito.")
+            
   # LEER
   elif opcion == "Ver Servidores":
       st.subheader("Listado de servidores")
