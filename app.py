@@ -256,7 +256,7 @@ else:
       alm_total = st.number_input("Almacenamiento Total (GB)",min_value=0.0,value=0.0,step=50.0,format="%.2f",)
       alm_usado = st.number_input("Almacenamiento Usado (GB)",min_value=0.0,value=0.0,step=10.0,format="%.2f",)
   
-      btn_guardar = st.form_submit_button("Guardar Servidor")
+      btn_guardar = st.form_submit_button("Guardar ➕")
   
       if btn_guardar:
         if not nombre.strip():
@@ -319,7 +319,7 @@ else:
               nuevo_alm_total = st.number_input("Almacenamiento Total (GB)",min_value=0.0,value=float(srv_actual[3]),step=50.0,format="%.2f",)
               nuevo_alm_usado = st.number_input("Almacenamiento Usado (GB)",min_value=0.0,value=float(srv_actual[4]),step=10.0,format="%.2f",)
   
-              btn_actualizar = st.form_submit_button("Actualizar Registro", type="primary")
+              btn_actualizar = st.form_submit_button("Actualizar Registro")
   
               if btn_actualizar:
                   try:
@@ -360,10 +360,10 @@ else:
           nombres_del_srv = st.session_state.servidores[:, 0].tolist()
           srv_a_eliminar = st.selectbox("Seleccione el servidor a eliminar:", nombres_del_srv)
   
-          if st.button("Eliminar Servidor", type="primary"):
-              idx_del = np.where(st.session_state.servidores[:, 0] == srv_a_eliminar)[0][0]
+          if st.button("Eliminar Servidor"):
+              srv_eli = np.where(st.session_state.servidores[:, 0] == srv_a_eliminar)[0][0]
   
-              st.session_state.servidores = np.delete(st.session_state.servidores, idx_del, axis=0)
+              st.session_state.servidores = np.delete(st.session_state.servidores, srv_eli, axis=0)
   
               st.success(f"Servidor '{srv_a_eliminar}' eliminado exitosamente.")
               st.rerun()
