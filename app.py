@@ -54,7 +54,6 @@ elif modulos == "Ejercicio 1":
       st.warning("Por favor, el campo importe no puede ser menor a cero.")
     else:
       st.session_state.movimientos.append((concepto,tipo_Movimiento,importe))
-      st.rerun()
       st.success(f"¡Movimiento '{concepto}' agregado con éxito!")  
     
   #Saldo total:
@@ -257,9 +256,9 @@ else:
       alm_total = st.number_input("Almacenamiento Total (GB)",min_value=0.0,value=0.0,step=50.0,format="%.2f",)
       alm_usado = st.number_input("Almacenamiento Usado (GB)",min_value=0.0,value=0.0,step=10.0,format="%.2f",)
   
-      btn_guardar = st.form_submit_button("Guardar Servidor", type="primary")
+      #btn_guardar = st.form_submit_button("Guardar Servidor", type="primary")
   
-      if btn_guardar:
+      if st.button("Guardar ➕"):
         if not nombre.strip():
           st.error("Por favor ingrese un nombre para el servidor.")
         else:
@@ -353,7 +352,7 @@ else:
       else:
           st.info("No hay servidores disponibles para actualizar.")
   
-  # D - ELIMINAR
+  # ELIMINAR
   elif opcion == "Eliminar Servidor":
       st.subheader("Eliminar servidor")
   
