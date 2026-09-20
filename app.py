@@ -17,20 +17,22 @@ with col2:
   st.image("Python_logo.png", width=300)
   st.title("PROYECTO 1 📋")
   st.markdown("---")
-  
+
+st.subheader("Proyecto Aplicado en Streamlit – Fundamentos de Programación")
+
 if modulos == "Home":
   col1, col2 = st.columns(2)
 
   with col1:
       st.subheader("👤 Datos del Estudiante")
-      st.markdown("**Nombre completo:** Juan Pérez Rodríguez")
+      st.markdown("**Nombre completo:** Nilda Echevarria Meza")
       st.markdown(
-          "**Información general:** Estudiante de Ingeniería / Ciencia de Datos"
+          "**Información general:** Ingeniero de Sistemas, con experiencia en el sector de mas de 5 años "
       )
-      st.markdown("**Correo:** estudiante@ejemplo.com")
+      st.markdown("**Correo:** prueba@gmail.com")
   
   with col2:
-      st.subheader("📚 Información Académica")
+      st.subheader("📚 Información Proyecto")
       st.markdown("**Nombre del módulo:** Programación con Python y Streamlit")
       st.markdown("**Año:** 2026")
   
@@ -46,28 +48,13 @@ if modulos == "Home":
   - **Gestión de Servidores:** Monitoreo e inspección del estado, disponibilidad y uso de almacenamiento de servidores mediante Poo (Programación Orientada a Objetos).
   - **Visualización de Datos:** Tablas e indicadores clave (métricas) actualizados en tiempo real.
   """)
-  
-  
-  
-  
-  
-  
-  
-  st.subheader("Proyecto Aplicado en Streamlit – Fundamentos de Programación")
-  st.subheader("👤**Elaborado por:** Nilda Echevarria Meza")
-  st.subheader("**Módulo 1 – Python Fundamentals**")
-  st.write("**Información general del estudiante:** Ingeniero de Sistemas, con experiencia en el sector de mas de 5 años")
-  st.write("**Año:** 2026")
+
   st.markdown("---")
-  st.subheader("📌 Descripción del Proyecto")
+  st.subheader("📌 Tecnologías utilizadas:")
   st.info("""
-  Esta aplicación fue desarrollada como parte de la evaluación práctica del módulo. Su objetivo principal es proveer una interfaz interactiva y fácil de usar para la gestión de registros mediante operaciones CRUD (Crear, Leer, Actualizar y Eliminar).
-  **Principales funcionalidades:**
-  - **Registro de Movimientos:** Formulario dinámico para el control de flujo financiero.
-  - **Gestión de Servidores:** Monitoreo e inspección del estado, disponibilidad y uso de almacenamiento de servidores mediante Poo (Programación Orientada a Objetos).
-  - **Visualización de Datos:** Tablas e indicadores clave (métricas) actualizados en tiempo real.
+  GIT, Python, Streamlit, NumPy.
   """)
-  st.write("**Tecnologías utilizadas:** GIT, Stramlit")
+  
 
 ##EJERCICIO 1
 elif modulos == "Ejercicio 1":
