@@ -265,18 +265,15 @@ else:
           try:
             # Instanciación de la clase externa
             srv = Servidor(nombre=nombre.strip(),tiempo_total_h=tiempo_total,tiempo_caida_h=tiempo_caida,almacenamiento_total_gb=alm_total,almacenamiento_usado_gb=alm_usado,)
-  
             resumen = srv.resumen()
-  
             nueva_fila = np.array([[srv.nombre,srv.tiempo_total_h,srv.tiempo_caida_h,srv.almacenamiento_total_gb,srv.almacenamiento_usado_gb,resumen["disponibilidad_pct"],resumen["uso_almacenamiento_pct"],resumen["estado"],]],dtype=object,)
   
             st.session_state.servidores = np.vstack((st.session_state.servidores, nueva_fila))
-            st.success(f"Servidor '{nombre}' registrado con éxito.")
             st.rerun()
   
           except ValueError as err:
             st.error(f"Error de validación en la clase: {err}")
-            
+          st.success(f"Servidor '{nombre}' registrado con éxito.")
       
             
   # LEER
