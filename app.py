@@ -121,7 +121,7 @@ elif modulos == "Ejercicio 1":
         columns=["Concepto", "Tipo de Movimiento", "Importe"]
       )
       
-      st.subheader("Listado de movimientos:")
+      st.subheader("📊 Listado de movimientos:")
       #st.write(st.session_state.movimientos)        #Si lo queremos mostrar como una lista
       #Mostrar en una tabla con dataframe
       st.dataframe(
@@ -193,7 +193,7 @@ elif modulos == "Ejercicio 2":
     
     #Mostrar los datos guardados en una tabla
     if st.session_state.inventario.shape[0] > 0:
-        st.subheader("Inventario de productos")
+        st.subheader("📦 Inventario de productos")
         # Convertimos el arreglo de NumPy a DataFrame solo para visualizarlo en la UI
         df_mostrar = pd.DataFrame(
             st.session_state.inventario,
@@ -260,7 +260,7 @@ elif modulos == "Ejercicio 3":
     
     # Mostrar los datos guardados en una tabla
     if st.session_state.tiempo.shape[0] > 0:
-      st.subheader("Tabla histórica de resultados obtenidos")
+      st.subheader("⚡ Tabla histórica de resultados obtenidos")
       df_mostrar = pd.DataFrame(st.session_state.tiempo,columns=["Tamaño (MB)","Velocidad (MBPS)","Tiempo en Minutos", "Tiempo en Segundos"],)
     
       # 3. Formato corregido para NumberColumn
@@ -321,7 +321,7 @@ else:
            
   # LEER
   elif opcion == "Ver listado de Servidores":
-      st.subheader("Listado de servidores")
+      st.subheader("🖥️ Listado de servidores")
   
       if st.session_state.servidores.shape[0] > 0:
           df_servidores = pd.DataFrame(st.session_state.servidores,
