@@ -19,6 +19,40 @@ with col2:
   st.markdown("---")
   
 if modulos == "Home":
+  col1, col2 = st.columns(2)
+
+  with col1:
+      st.subheader("👤 Datos del Estudiante")
+      st.markdown("**Nombre completo:** Juan Pérez Rodríguez")
+      st.markdown(
+          "**Información general:** Estudiante de Ingeniería / Ciencia de Datos"
+      )
+      st.markdown("**Correo:** estudiante@ejemplo.com")
+  
+  with col2:
+      st.subheader("📚 Información Académica")
+      st.markdown("**Nombre del módulo:** Programación con Python y Streamlit")
+      st.markdown("**Año:** 2026")
+  
+  st.markdown("---")
+  
+  # Breve descripción del proyecto
+  st.subheader("📌 Descripción del Proyecto")
+  st.info("""
+  Esta aplicación fue desarrollada como parte de la evaluación práctica del módulo. Su objetivo principal es proveer una interfaz interactiva y fácil de usar para la gestión de registros mediante operaciones CRUD (Crear, Leer, Actualizar y Eliminar).
+  
+  **Principales funcionalidades:**
+  - **Registro de Movimientos:** Formulario dinámico para el control de flujo financiero.
+  - **Gestión de Servidores:** Monitoreo e inspección del estado, disponibilidad y uso de almacenamiento de servidores mediante Poo (Programación Orientada a Objetos).
+  - **Visualización de Datos:** Tablas e indicadores clave (métricas) actualizados en tiempo real.
+  """)
+  
+  
+  
+  
+  
+  
+  
   st.subheader("Proyecto Aplicado en Streamlit – Fundamentos de Programación")
   st.subheader("👤**Elaborado por:** Nilda Echevarria Meza")
   st.subheader("**Módulo 1 – Python Fundamentals**")
