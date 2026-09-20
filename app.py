@@ -36,8 +36,7 @@ if modulos == "Home":
       st.markdown(
           "**Información general:** Ingeniero de Sistemas, con experiencia en el sector de mas de 5 años "
       )
-      st.markdown("**Correo:** prueba@gmail.com")
-  
+        
   with col2:
       st.subheader("📚 Información del Curso")
       st.markdown("**Nombre del módulo:** Programación con Python y Streamlit")
