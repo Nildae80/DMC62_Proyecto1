@@ -185,55 +185,57 @@ elif modulos == "Ejercicio 3":
   if "tiempo" not in st.session_state:
     st.session_state.tiempo = np.empty((0, 2), dtype=object)
   
-  st.subheader("Formulario de registro para calcular el tiempo de transferencia de un archivo con funciones")
-  
-  tipo_Funcion = st.selectbox("Seleccione el tipo de función",["Calcular tiempo de transferencia de archivo", "Otro"],index=None,placeholder="Seleccione tipo de movimiento...",)
-  
-  if tipo_Funcion == "Calcular tiempo de transferencia de archivo": 
-    tamano_archivo = float(st.number_input("Ingresa el tamaño del archivo (MB)",value=0.00,min_value=0.0,step=0.1,format="%.2f",))
-    velocidad = float(st.number_input("Ingresa la velocidad de transferencia (MBPS)",value=0.00,min_value=0.0,step=0.1,format="%.2f",))
-  
-    if st.button("Ejecutar", type="primary"):
-      if velocidad <= 0 or tamano_archivo <= 0:
-        st.error("El tamaño del archivo y la velocidad deben ser mayores a 0.")
-      
-      else:
-        resultado_tiempo = lf.calcular_tiempo_transferencia_archivo(tamano_archivo, velocidad)
-    
-        minutos = resultado_tiempo["tiempo_minutos"]
-        segundos = resultado_tiempo["tiempo_segundos"]
+  st.subheader("Formulario de registro para calcular el tiempo de transferencia de un archivo con `funciones`")
 
-        if "tiempo" not in st.session_state or st.session_state.tiempo.shape[1] != 4:
-          st.session_state.tiempo = np.empty((0, 4), dtype=object)
-        
-        nuevo_registro = np.array([[tamano_archivo, velocidad, minutos, segundos]], dtype=object)
-        st.session_state.tiempo = np.vstack((st.session_state.tiempo, nuevo_registro))
+  with st.form("form_funcion", clear_on_submit=True):
+    tipo_Funcion = st.selectbox("Seleccione el tipo de función",["Calcular tiempo de transferencia de archivo", "Otro"],index=None,placeholder="Seleccione tipo de movimiento...",)
     
-        st.write(f"El tiempo de transferencia en: {minutos} minutos")
-        st.write(f"El tiempo de transferencia en: {segundos} segundos")
-        st.success("¡Cálculo realizado y guardado con éxito!")
+    if tipo_Funcion == "Calcular tiempo de transferencia de archivo": 
+      tamano_archivo = float(st.number_input("Ingresa el tamaño del archivo (MB)",value=0.00,min_value=0.0,step=0.1,format="%.2f",))
+      velocidad = float(st.number_input("Ingresa la velocidad de transferencia (MBPS)",value=0.00,min_value=0.0,step=0.1,format="%.2f",))
+      btn_guardar = st.form_submit_button("Guardar ➕")
+    
+      if btn_guardar:
+        if velocidad <= 0 or tamano_archivo <= 0:
+          st.error("El tamaño del archivo y la velocidad deben ser mayores a 0.")
+        
+        else:
+          resultado_tiempo = lf.calcular_tiempo_transferencia_archivo(tamano_archivo, velocidad)
+      
+          minutos = resultado_tiempo["tiempo_minutos"]
+          segundos = resultado_tiempo["tiempo_segundos"]
   
-  elif tipo_Funcion == "Otro":
-    st.write("No se tiene implementado otras funciones")
-  else:
-    st.write("Elija una opción.")
-  
-  # Mostrar los datos guardados en una tabla
-  if st.session_state.tiempo.shape[0] > 0:
-    st.subheader("Tabla histórica de resultados obtenidos")
-    df_mostrar = pd.DataFrame(st.session_state.tiempo,columns=["Tamaño (MB)","Velocidad (MBPS)","Tiempo en Minutos", "Tiempo en Segundos"],)
-  
-    # 3. Formato corregido para NumberColumn
-    st.dataframe(df_mostrar,use_container_width=True,
-        column_config={
-          "Tamaño (MB)": st.column_config.NumberColumn("Tamaño (MB)", format="%.2f MB"),
-          "Velocidad (MBPS)": st.column_config.NumberColumn("Velocidad (MBPS)", format="%.2f MBPS"),
-          "Tiempo en Minutos": st.column_config.NumberColumn("Tiempo (min)", format="%.2f min"),
-          "Tiempo en Segundos": st.column_config.NumberColumn("Tiempo (seg)", format="%.2f seg"),
-          },
-      )
-  else:
-    st.info("Aún no hay ejecuciones registradas.")
+          if "tiempo" not in st.session_state or st.session_state.tiempo.shape[1] != 4:
+            st.session_state.tiempo = np.empty((0, 4), dtype=object)
+          
+          nuevo_registro = np.array([[tamano_archivo, velocidad, minutos, segundos]], dtype=object)
+          st.session_state.tiempo = np.vstack((st.session_state.tiempo, nuevo_registro))
+      
+          st.write(f"El tiempo de transferencia en: {minutos} minutos")
+          st.write(f"El tiempo de transferencia en: {segundos} segundos")
+          st.success("¡Cálculo realizado y guardado con éxito!")
+    
+    elif tipo_Funcion == "Otro":
+      st.write("No se tiene implementado otras funciones")
+    else:
+      st.write("Elija una opción.")
+    
+    # Mostrar los datos guardados en una tabla
+    if st.session_state.tiempo.shape[0] > 0:
+      st.subheader("Tabla histórica de resultados obtenidos")
+      df_mostrar = pd.DataFrame(st.session_state.tiempo,columns=["Tamaño (MB)","Velocidad (MBPS)","Tiempo en Minutos", "Tiempo en Segundos"],)
+    
+      # 3. Formato corregido para NumberColumn
+      st.dataframe(df_mostrar,use_container_width=True,
+          column_config={
+            "Tamaño (MB)": st.column_config.NumberColumn("Tamaño (MB)", format="%.2f MB"),
+            "Velocidad (MBPS)": st.column_config.NumberColumn("Velocidad (MBPS)", format="%.2f MBPS"),
+            "Tiempo en Minutos": st.column_config.NumberColumn("Tiempo (min)", format="%.2f min"),
+            "Tiempo en Segundos": st.column_config.NumberColumn("Tiempo (seg)", format="%.2f seg"),
+            },
+        )
+    else:
+      st.info("Aún no hay ejecuciones registradas.")
 
 
 ##EJERCICIO 4
