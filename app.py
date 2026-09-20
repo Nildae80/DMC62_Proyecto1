@@ -256,9 +256,9 @@ else:
       alm_total = st.number_input("Almacenamiento Total (GB)",min_value=0.0,value=0.0,step=50.0,format="%.2f",)
       alm_usado = st.number_input("Almacenamiento Usado (GB)",min_value=0.0,value=0.0,step=10.0,format="%.2f",)
   
-      #btn_guardar = st.form_submit_button("Guardar Servidor", type="primary")
+      btn_guardar = st.form_submit_button("Guardar Servidor")
   
-      if st.button("Guardar ➕"):
+      if btn_guardar:
         if not nombre.strip():
           st.error("Por favor ingrese un nombre para el servidor.")
         else:
