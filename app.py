@@ -126,53 +126,55 @@ elif modulos == "Ejercicio 2":
     st.session_state.inventario = np.empty((0, 5), dtype=object) # arreglo vacío de 2 dimensiones con 5 columnas
   
   st.subheader("Formulario de Registro de Productos ✏️")
-  
-  nombre = st.text_input("Ingresa el nombre del Producto")
-  categoria = st.selectbox("Selecciona la categoría del producto", ["Abarrotes","Bebidas","Mascotas","Libreria"],index=None,placeholder="Seleccione la categoría...")
-  precio = float(st.number_input("Ingresa el precio de cada producto (S/) ", value=0.00, min_value=0.0, step=0.5, format="%.2f"))
-  cantidad = int(st.number_input("Cantidad", min_value=1, step=1))
-  
-  if st.button("Guardar ➕"):
-    if nombre.strip() == "":
-      st.warning("Por favor, ingresa un producto antes de presionar el botón.")
-    elif categoria == None:
-      st.warning("Por favor, ingresa el tipo de categoría antes de presionar el botón.")
-    elif precio == 0:
-      st.warning("Por favor, ingresa el precio del producto antes de presionar el botón.")
-    elif precio < 0:
-      st.warning("Por favor, el campo precio del producto no puede ser menor a cero.")
-    elif cantidad == 0:
-      st.warning("Por favor, ingresa la cantidad de productos antes de presionar el botón.")
-    elif precio < 0:
-      st.warning("Por favor, el campo cantidad del producto no puede ser menor a cero.")
-    else:
-      total = precio * cantidad  # Calcular el total
-      nuevo_registro = np.array([[nombre, categoria, precio, cantidad, total]], dtype=object)   # Crear una nueva fila para el arreglo
-      st.session_state.inventario = np.vstack((st.session_state.inventario, nuevo_registro))  # Agregar la nueva fila al arreglo existente usando np.vstack
-      st.success(f"¡Producto '{nombre}' agregado con éxito!.")
-  
-  #Mostrar los datos guardados en una tabla
-  if st.session_state.inventario.shape[0] > 0:
-      st.subheader("Inventario de productos")
-      # Convertimos el arreglo de NumPy a DataFrame solo para visualizarlo en la UI
-      df_mostrar = pd.DataFrame(
-          st.session_state.inventario,
-          columns=["Producto", "Categoría", "Precio", "Cantidad", "Total"],
-      )
-  
-      st.dataframe(
-          df_mostrar,
-          use_container_width=True,
-          column_config={
-              "Precio": st.column_config.NumberColumn("Precio", format="S/ %.2f"),
-              "Total": st.column_config.NumberColumn("Total", format="S/ %.2f"),
-          },
-      )  
-      total_general = np.sum(st.session_state.inventario[:, 4].astype(float))
-      st.metric("Importe Total Acumulada", f"S/ {total_general:,.2f}")  
-  else:
-      st.info("Aún no hay productos registrados.")
 
+  with st.form("form_inventario", clear_on_submit=True):
+    nombre = st.text_input("Ingresa el nombre del Producto")
+    categoria = st.selectbox("Selecciona la categoría del producto", ["Abarrotes","Bebidas","Mascotas","Libreria"],index=None,placeholder="Seleccione la categoría...")
+    precio = float(st.number_input("Ingresa el precio de cada producto (S/) ", value=0.00, min_value=0.0, step=0.5, format="%.2f"))
+    cantidad = int(st.number_input("Cantidad", min_value=1, step=1))
+    btn_guardar = st.form_submit_button("Guardar ➕")
+    
+    if btn_guardar:
+      if nombre.strip() == "":
+        st.warning("Por favor, ingresa un producto antes de presionar el botón.")
+      elif categoria == None:
+        st.warning("Por favor, ingresa el tipo de categoría antes de presionar el botón.")
+      elif precio == 0:
+        st.warning("Por favor, ingresa el precio del producto antes de presionar el botón.")
+      elif precio < 0:
+        st.warning("Por favor, el campo precio del producto no puede ser menor a cero.")
+      elif cantidad == 0:
+        st.warning("Por favor, ingresa la cantidad de productos antes de presionar el botón.")
+      elif precio < 0:
+        st.warning("Por favor, el campo cantidad del producto no puede ser menor a cero.")
+      else:
+        total = precio * cantidad  # Calcular el total
+        nuevo_registro = np.array([[nombre, categoria, precio, cantidad, total]], dtype=object)   # Crear una nueva fila para el arreglo
+        st.session_state.inventario = np.vstack((st.session_state.inventario, nuevo_registro))  # Agregar la nueva fila al arreglo existente usando np.vstack
+        st.success(f"¡Producto '{nombre}' agregado con éxito!.")
+    
+    #Mostrar los datos guardados en una tabla
+    if st.session_state.inventario.shape[0] > 0:
+        st.subheader("Inventario de productos")
+        # Convertimos el arreglo de NumPy a DataFrame solo para visualizarlo en la UI
+        df_mostrar = pd.DataFrame(
+            st.session_state.inventario,
+            columns=["Producto", "Categoría", "Precio", "Cantidad", "Total"],
+        )
+    
+        st.dataframe(
+            df_mostrar,
+            use_container_width=True,
+            column_config={
+                "Precio": st.column_config.NumberColumn("Precio", format="S/ %.2f"),
+                "Total": st.column_config.NumberColumn("Total", format="S/ %.2f"),
+            },
+        )  
+        total_general = np.sum(st.session_state.inventario[:, 4].astype(float))
+        st.metric("Importe Total Acumulada", f"S/ {total_general:,.2f}")  
+    else:
+        st.info("Aún no hay productos registrados.")
+  
 
 ##EJERCICIO 3
 elif modulos == "Ejercicio 3":
