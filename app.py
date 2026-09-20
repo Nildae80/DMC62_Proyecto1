@@ -269,8 +269,8 @@ else:
             nueva_fila = np.array([[srv.nombre,srv.tiempo_total_h,srv.tiempo_caida_h,srv.almacenamiento_total_gb,srv.almacenamiento_usado_gb,resumen["disponibilidad_pct"],resumen["uso_almacenamiento_pct"],resumen["estado"],]],dtype=object,)
   
             st.session_state.servidores = np.vstack((st.session_state.servidores, nueva_fila))
-            st.rerun()
-            st.success(f"Servidor '{nombre}' registrado con éxito.")
+            st.success(f"Servidor '{nombre}' registrado con éxito.", icon="✅")
+            st.rerun()            
   
           except ValueError as err:
             st.error(f"Error de validación en la clase: {err}")
@@ -342,7 +342,7 @@ else:
                           resumen_editado["estado"],
                       ]
   
-                      st.success("Servidor actualizado correctamente.")
+                      st.success("Servidor actualizado correctamente.", icon="✅")
                       st.rerun()
   
                   except ValueError as err:
@@ -363,7 +363,7 @@ else:
   
               st.session_state.servidores = np.delete(st.session_state.servidores, srv_eli, axis=0)
   
-              st.success(f"Servidor '{srv_a_eliminar}' eliminado exitosamente.")
+              st.success(f"Servidor '{srv_a_eliminar}' eliminado exitosamente.", icon="✅")
               st.rerun()
       else:
           st.info("No hay servidores disponibles para eliminar.")
