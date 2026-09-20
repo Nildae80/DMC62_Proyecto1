@@ -5,6 +5,13 @@ import libreria_funciones_proyecto1 as lf
 
 from librería_clases_proyecto1 import Servidor
 
+st.set_page_config(
+    page_title="Proyecto 1 | Python Analytics",
+    page_icon="🖥️",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
 st.sidebar.title("Especialización en Python for Analytics")
 imagen = st.sidebar.image("Python_logo.png", width=200)
 modulos = st.sidebar.selectbox("Selecciones el modulo",["Home","Ejercicio 1","Ejercicio 2","Ejercicio 3","Ejercicio 4"])
