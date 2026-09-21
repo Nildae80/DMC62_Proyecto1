@@ -59,7 +59,7 @@ if modulos == "Home":
   st.markdown("---")
   st.subheader("📌 Tecnologías utilizadas:")
   st.info("""
-  GIT, Python, Streamlit, NumPy.
+  GIT, Python, Streamlit, NumPy, Pandas.
   """)
   
 
