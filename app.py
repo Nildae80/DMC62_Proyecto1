@@ -2,7 +2,6 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import libreria_funciones_proyecto1 as lf
-
 from librería_clases_proyecto1 import Servidor
 
 st.set_page_config(
@@ -275,9 +274,6 @@ elif modulos == "Ejercicio 3":
         )
     else:
       st.info("Aún no hay ejecuciones registradas.")
-
-
-
 
 
 ##EJERCICIO 4
