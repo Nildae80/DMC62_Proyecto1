@@ -11,6 +11,381 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+/* =========================================================
+   PROYECTO 1 | ESTILOS CORPORATIVOS
+   Paleta: Gris Ejecutivo + Azul Corporativo
+   Archivo pensado para Streamlit
+   ========================================================= */
+
+/* ---------- PALETA ---------- */
+:root {
+    --bg-main: #F3F4F6;
+    --bg-card: #FFFFFF;
+    --bg-dark: #1F2937;
+    --bg-dark-2: #111827;
+
+    --blue: #2563EB;
+    --blue-dark: #1D4ED8;
+    --blue-light: #3B82F6;
+    --blue-soft: #EFF6FF;
+
+    --text: #111827;
+    --text-secondary: #4B5563;
+    --text-muted: #6B7280;
+
+    --border: #D1D5DB;
+    --border-light: #E5E7EB;
+
+    --success: #059669;
+    --warning: #D97706;
+    --danger: #DC2626;
+
+    --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
+    --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.10);
+    --shadow-blue: 0 8px 25px rgba(37, 99, 235, 0.18);
+
+    --radius: 14px;
+    --transition: 180ms ease;
+}
+
+/* ---------- FONDO GENERAL ---------- */
+.stApp {
+    background:
+        radial-gradient(circle at 85% 5%, rgba(37, 99, 235, 0.06), transparent 28%),
+        linear-gradient(135deg, #F8FAFC 0%, var(--bg-main) 100%);
+    color: var(--text);
+}
+
+/* Evita que la barra superior robe protagonismo */
+header[data-testid="stHeader"] {
+    background: rgba(243, 244, 246, 0.82);
+    backdrop-filter: blur(12px);
+}
+
+/* ---------- CONTENEDOR PRINCIPAL ---------- */
+.main .block-container {
+    max-width: 1450px;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    animation: pageEnter 500ms ease both;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- TIPOGRAFÍA ---------- */
+html, body, [class*="css"] {
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+h1, h2, h3, h4 {
+    color: var(--text) !important;
+    font-weight: 750 !important;
+    letter-spacing: -0.025em;
+}
+
+h1 {
+    font-size: clamp(2rem, 4vw, 3rem) !important;
+}
+
+h2 {
+    font-size: 1.65rem !important;
+}
+
+h3 {
+    font-size: 1.25rem !important;
+}
+
+p, li, label {
+    color: var(--text-secondary);
+}
+
+/* ---------- SIDEBAR ---------- */
+section[data-testid="stSidebar"] {
+    background:
+        linear-gradient(180deg, #1F2937 0%, #111827 100%);
+    border-right: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 8px 0 30px rgba(15, 23, 42, 0.12);
+}
+
+section[data-testid="stSidebar"] > div {
+    padding-top: 1.5rem;
+}
+
+section[data-testid="stSidebar"] * {
+    color: #F9FAFB !important;
+}
+
+section[data-testid="stSidebar"] h1,
+section[data-testid="stSidebar"] h2,
+section[data-testid="stSidebar"] h3 {
+    color: #FFFFFF !important;
+}
+
+section[data-testid="stSidebar"] img {
+    border-radius: 12px;
+    transition: transform var(--transition), filter var(--transition);
+}
+
+section[data-testid="stSidebar"] img:hover {
+    transform: scale(1.025);
+    filter: drop-shadow(0 0 12px rgba(59,130,246,0.35));
+}
+
+/* Selector del sidebar */
+section[data-testid="stSidebar"] div[data-baseweb="select"] > div {
+    background: rgba(255,255,255,0.08) !important;
+    border: 1px solid rgba(255,255,255,0.15) !important;
+    border-radius: 10px !important;
+    transition: all var(--transition);
+}
+
+section[data-testid="stSidebar"] div[data-baseweb="select"] > div:hover {
+    border-color: rgba(59,130,246,0.8) !important;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+}
+
+/* ---------- SELECTORES GENERALES ---------- */
+div[data-baseweb="select"] > div {
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    background: #FFFFFF !important;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+div[data-baseweb="select"] > div:hover {
+    border-color: var(--blue-light) !important;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.08);
+}
+
+/* ---------- INPUTS ---------- */
+div[data-baseweb="input"] {
+    border-radius: 10px !important;
+}
+
+div[data-baseweb="input"] > div {
+    background: #FFFFFF !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    transition: all var(--transition);
+}
+
+div[data-baseweb="input"] > div:hover {
+    border-color: #93C5FD !important;
+}
+
+div[data-baseweb="input"] > div:focus-within {
+    border-color: var(--blue) !important;
+    box-shadow:
+        0 0 0 3px rgba(37,99,235,0.12),
+        0 4px 14px rgba(37,99,235,0.08);
+}
+
+/* Texto de inputs */
+div[data-baseweb="input"] input {
+    color: var(--text) !important;
+    font-weight: 500;
+}
+
+/* ---------- FORMULARIOS ---------- */
+div[data-testid="stForm"] {
+    background: rgba(255,255,255,0.94);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    padding: 1.4rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+div[data-testid="stForm"]:hover {
+    box-shadow: var(--shadow-md);
+}
+
+/* ---------- BOTONES ---------- */
+.stButton > button,
+.stFormSubmitButton > button {
+    background: linear-gradient(135deg, var(--blue), var(--blue-dark)) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 10px !important;
+    padding: 0.65rem 1.25rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.01em;
+    box-shadow: 0 5px 14px rgba(37,99,235,0.20);
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        filter var(--transition);
+}
+
+.stButton > button:hover,
+.stFormSubmitButton > button:hover {
+    color: #FFFFFF !important;
+    transform: translateY(-2px);
+    box-shadow: 0 9px 22px rgba(37,99,235,0.28);
+    filter: brightness(1.05);
+}
+
+.stButton > button:active,
+.stFormSubmitButton > button:active {
+    transform: translateY(0);
+}
+
+/* ---------- MÉTRICAS ---------- */
+div[data-testid="stMetric"] {
+    background: #FFFFFF;
+    border: 1px solid var(--border-light);
+    border-left: 4px solid var(--blue);
+    border-radius: 12px;
+    padding: 1rem 1.1rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+div[data-testid="stMetric"]:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-blue);
+}
+
+div[data-testid="stMetricLabel"] {
+    color: var(--text-secondary) !important;
+    font-weight: 650 !important;
+}
+
+div[data-testid="stMetricValue"] {
+    color: var(--text) !important;
+    font-weight: 800 !important;
+}
+
+/* ---------- DATAFRAMES / TABLAS ---------- */
+div[data-testid="stDataFrame"] {
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    background: #FFFFFF;
+}
+
+/* ---------- ALERTAS ---------- */
+div[data-testid="stAlert"] {
+    border-radius: 11px !important;
+    border: 1px solid var(--border-light) !important;
+    box-shadow: var(--shadow-sm);
+}
+
+/* ---------- INFO ---------- */
+div[data-testid="stAlert"][kind="info"] {
+    background: var(--blue-soft);
+}
+
+/* ---------- DIVISORES ---------- */
+hr {
+    border: none !important;
+    height: 1px !important;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #CBD5E1,
+        transparent
+    ) !important;
+    margin: 1.5rem 0 !important;
+}
+
+/* ---------- IMÁGENES PRINCIPALES ---------- */
+.main img {
+    border-radius: 14px;
+    transition: transform 250ms ease, filter 250ms ease;
+}
+
+.main img:hover {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 10px 18px rgba(15,23,42,0.12));
+}
+
+/* ---------- CONTENEDORES / COLUMNAS ---------- */
+div[data-testid="column"] {
+    transition: transform var(--transition);
+}
+
+/* ---------- RADIO / CHECKBOX ---------- */
+div[role="radiogroup"] label,
+div[data-testid="stCheckbox"] label {
+    color: var(--text-secondary) !important;
+}
+
+/* ---------- FOCUS ACCESIBLE ---------- */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 3px solid rgba(37,99,235,0.28) !important;
+    outline-offset: 2px;
+}
+
+/* ---------- SCROLLBAR ---------- */
+::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #E5E7EB;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #9CA3AF;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--blue);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+    .main .block-container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem !important;
+    }
+
+    h2 {
+        font-size: 1.4rem !important;
+    }
+
+    div[data-testid="stForm"] {
+        padding: 1rem;
+    }
+}
+
+/* ---------- REDUCCIÓN DE MOVIMIENTO ---------- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
 
 st.sidebar.title("Especialización en Python for Analytics")
 imagen = st.sidebar.image("Python_logo.png", width=200)
