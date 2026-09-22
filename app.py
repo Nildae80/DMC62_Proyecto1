@@ -239,11 +239,11 @@ elif modulos == "Ejercicio 3":
             if "tiempo" not in st.session_state or st.session_state.tiempo.shape[1] != 4:
                 st.session_state.tiempo = np.empty((0, 4), dtype=object)
             
-            nuevo_registro = np.array([[tamano_archivo, velocidad, minutos, segundos]], dtype=object)
-            st.session_state.tiempo = np.vstack((st.session_state.tiempo, nuevo_registro))
-            st.write(f"El tiempo de transferencia en: {minutos} minutos")
-            st.write(f"El tiempo de transferencia en: {segundos} segundos")
-            st.success("¡Cálculo realizado y guardado con éxito!")
+                nuevo_registro = np.array([[tamano_archivo, velocidad, minutos, segundos]], dtype=object)
+                st.session_state.tiempo = np.vstack((st.session_state.tiempo, nuevo_registro))
+                st.write(f"El tiempo de transferencia en: {minutos} minutos")
+                st.write(f"El tiempo de transferencia en: {segundos} segundos")
+                st.success("¡Cálculo realizado y guardado con éxito!")
         
     elif tipo_Funcion == "Otro":
         st.write("No se tiene implementado otras funciones")
