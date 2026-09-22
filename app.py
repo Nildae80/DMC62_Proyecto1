@@ -218,12 +218,13 @@ elif modulos == "Ejercicio 3":
     st.write("En este ejercicio se usará funciones desde una librería externa.")
     if "tiempo" not in st.session_state:
         st.session_state.tiempo = np.empty((0, 2), dtype=object)
+    
     st.subheader("Formulario de registro para calcular el tiempo de transferencia de un archivo con `funciones` ")
     tipo_Funcion = st.selectbox("Seleccione el tipo de función",["Calcular tiempo de transferencia de archivo", "Otro"],index=None,placeholder="Seleccione tipo de movimiento...",)
 
-    with st.form("form_funcion", clear_on_submit=True):        
+    if tipo_Funcion == "Calcular tiempo de transferencia de archivo":    
         
-        if tipo_Funcion == "Calcular tiempo de transferencia de archivo": 
+        with st.form("form_funcion", clear_on_submit=True): 
             tamano_archivo = float(st.number_input("Ingresa el tamaño del archivo (MB)",value=0.00,min_value=0.0,step=0.1,format="%.2f",))
             velocidad = float(st.number_input("Ingresa la velocidad de transferencia (MBPS)",value=0.00,min_value=0.0,step=0.1,format="%.2f",))
             btn_guardar = st.form_submit_button("Guardar ")
@@ -244,10 +245,10 @@ elif modulos == "Ejercicio 3":
             st.write(f"El tiempo de transferencia en: {segundos} segundos")
             st.success("¡Cálculo realizado y guardado con éxito!")
         
-        elif tipo_Funcion == "Otro":
-            st.write("No se tiene implementado otras funciones")
-        else:
-            st.write("Elija una opción del menú desplegable.")
+    elif tipo_Funcion == "Otro":
+        st.write("No se tiene implementado otras funciones")
+    else:
+        st.write("Elija una opción del menú desplegable.")
     
     # Mostrar los datos guardados en una tabla
     if st.session_state.tiempo.shape[0] > 0:
