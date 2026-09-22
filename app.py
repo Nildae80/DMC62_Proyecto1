@@ -229,14 +229,8 @@ elif modulos == "Ejercicio 3":
 
     if tipo_Funcion == "Calcular tiempo de transferencia de archivo":
         with st.form("form_funcion", clear_on_submit=True):
-            tamano_archivo = float(st.number_input(
-                "Ingresa el tamaño del archivo (MB)",
-                value=0.00, min_value=0.0, step=0.1, format="%.2f"
-            ))
-            velocidad = float(st.number_input(
-                "Ingresa la velocidad de transferencia (MBPS)",
-                value=0.00, min_value=0.0, step=0.1, format="%.2f"
-            ))
+            tamano_archivo = float(st.number_input("Ingresa el tamaño del archivo (MB)",value=0.00, min_value=0.0, step=0.5, format="%.2f"))
+            velocidad = float(st.number_input("Ingresa la velocidad de transferencia (MBPS)",value=0.00, min_value=0.0, step=0.5, format="%.2f"))
             
             btn_guardar = st.form_submit_button("Guardar ➕")
 
