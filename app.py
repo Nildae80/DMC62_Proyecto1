@@ -216,7 +216,6 @@ elif modulos == "Ejercicio 2":
 elif modulos == "Ejercicio 3":
     st.header("Te encuentras en la ventana del Ejercicio 3")
     st.write("En este ejercicio se usará funciones desde una librería externa.")
-    # 1. Nombre de variable corregido en el session_state (2 columnas)
     if "tiempo" not in st.session_state:
         st.session_state.tiempo = np.empty((0, 2), dtype=object)
   
