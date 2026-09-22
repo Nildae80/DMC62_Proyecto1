@@ -230,7 +230,7 @@ elif modulos == "Ejercicio 3":
     if tipo_Funcion == "Calcular tiempo de transferencia de archivo": 
       tamano_archivo = float(st.number_input("Ingresa el tamaño del archivo (MB)",value=0.00,min_value=0.0,step=0.1,format="%.2f",))
       velocidad = float(st.number_input("Ingresa la velocidad de transferencia (MBPS)",value=0.00,min_value=0.0,step=0.1,format="%.2f",))
-      btn_guardar = st.form_submit_button("Guardar ➕")
+      #btn_guardar = st.form_submit_button("Guardar ➕")
     
       if btn_guardar:
         if velocidad <= 0 or tamano_archivo <= 0:
@@ -256,8 +256,10 @@ elif modulos == "Ejercicio 3":
       st.write("No se tiene implementado otras funciones")
         
     else:
-      st.write("Elija una opción.")
-    
+      st.write("Elija una opción del menú desplegable.")
+
+    btn_guardar = st.form_submit_button("Guardar ➕")
+      
     # Mostrar los datos guardados en una tabla
     if st.session_state.tiempo.shape[0] > 0:
       st.subheader("⚡ Tabla histórica de resultados obtenidos")
