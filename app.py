@@ -220,24 +220,23 @@ elif modulos == "Ejercicio 3":
         st.session_state.tiempo = np.empty((0, 2), dtype=object)
     st.subheader("Formulario de registro para calcular el tiempo de transferencia de un archivo con `funciones` ")
 
-    with st.form("form_funcion", clear_on_submit=True):
-      tipo_Funcion = st.selectbox("Seleccione el tipo de función",["Calcular tiempo de transferencia de archivo", "Otro"],index=None,placeholder="Seleccione tipo de movimiento...",)
-      #tipo_Funcion = st.selectbox("Seleccione el tipo de función",["Calcular tiempo de transferencia de archivo"],index=None,placeholder="Seleccione tipo de movimiento...",)  
+    with st.form("form_funcion", clear_on_submit=True):
+        tipo_Funcion = st.selectbox("Seleccione el tipo de función",["Calcular tiempo de transferencia de archivo", "Otro"],index=None,placeholder="Seleccione tipo de movimiento...",)
+        #tipo_Funcion = st.selectbox("Seleccione el tipo de función",["Calcular tiempo de transferencia de archivo"],index=None,placeholder="Seleccione tipo de movimiento...",)  
     
-      if tipo_Funcion == "Calcular tiempo de transferencia de archivo": 
-        tamano_archivo = float(st.number_input("Ingresa el tamaño del archivo (MB)",value=0.00,min_value=0.0,step=0.1,format="%.2f",))
-        velocidad = float(st.number_input("Ingresa la velocidad de transferencia (MBPS)",value=0.00,min_value=0.0,step=0.1,format="%.2f",))
-        btn_guardar = st.form_submit_button("Guardar ")
+        if tipo_Funcion == "Calcular tiempo de transferencia de archivo": 
+            tamano_archivo = float(st.number_input("Ingresa el tamaño del archivo (MB)",value=0.00,min_value=0.0,step=0.1,format="%.2f",))
+            velocidad = float(st.number_input("Ingresa la velocidad de transferencia (MBPS)",value=0.00,min_value=0.0,step=0.1,format="%.2f",))
+            btn_guardar = st.form_submit_button("Guardar ")
     
-        if btn_guardar:
-          if velocidad <= 0 or tamano_archivo <= 0:
-            st.error("El tamaño del archivo y la velocidad deben ser mayores a 0.")
-        
-          else:
-            resultado_tiempo = lf.calcular_tiempo_transferencia_archivo(tamano_archivo, velocidad)
+            if btn_guardar:
+                if velocidad <= 0 or tamano_archivo <= 0:
+                    st.error("El tamaño del archivo y la velocidad deben ser mayores a 0.")
+            else:
+                resultado_tiempo = lf.calcular_tiempo_transferencia_archivo(tamano_archivo, velocidad)
       
-            minutos = resultado_tiempo["tiempo_minutos"]
-            segundos = resultado_tiempo["tiempo_segundos"]
+                minutos = resultado_tiempo["tiempo_minutos"]
+                segundos = resultado_tiempo["tiempo_segundos"]
   
             if "tiempo" not in st.session_state or st.session_state.tiempo.shape[1] != 4:
               st.session_state.tiempo = np.empty((0, 4), dtype=object)
@@ -249,11 +248,10 @@ elif modulos == "Ejercicio 3":
             st.write(f"El tiempo de transferencia en: {segundos} segundos")
             st.success("¡Cálculo realizado y guardado con éxito!")
     
-      elif tipo_Funcion == "Otro":
-        st.write("No se tiene implementado otras funciones")
-        
-      else:
-        st.write("Elija una opción del menú desplegable.")
+        elif tipo_Funcion == "Otro":
+            st.write("No se tiene implementado otras funciones")
+        else:
+            st.write("Elija una opción del menú desplegable.")
       
       # Mostrar los datos guardados en una tabla
       if st.session_state.tiempo.shape[0] > 0:
