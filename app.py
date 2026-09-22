@@ -256,7 +256,7 @@ elif modulos == "Ejercicio 3":
                     
                     st.success(f"Cálculo exitoso: {minutos} min, {segundos} seg.")
                     st.info("¡Cálculo realizado y guardado con éxito!", icon="✅")
-                    st.rerun()
+                    #st.rerun()
 
     elif tipo_Funcion == "Otro":
         st.info("No se tiene implementado otras funciones por el momento.")
