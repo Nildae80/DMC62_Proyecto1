@@ -254,6 +254,7 @@ elif modulos == "Ejercicio 3":
     
     elif tipo_Funcion == "Otro":
       st.write("No se tiene implementado otras funciones")
+        
     else:
       st.write("Elija una opción.")
     
@@ -384,7 +385,7 @@ else:
                       ]
   
                       st.success("Servidor actualizado correctamente.", icon="✅")
-                      st.rerun()
+                      #st.rerun()
   
                   except ValueError as err:
                       st.error(f"Error de validación al actualizar: {err}")
@@ -403,7 +404,7 @@ else:
               srv_elim = np.where(st.session_state.servidores[:, 0] == srv_a_eliminar)[0][0]  
               st.session_state.servidores = np.delete(st.session_state.servidores, srv_elim, axis=0)  
               st.success(f"Servidor '{srv_a_eliminar}' eliminado exitosamente.", icon="✅")
-              st.rerun()
+              #st.rerun()
       else:
           st.info("No hay servidores disponibles para eliminar.")
 
