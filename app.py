@@ -240,28 +240,28 @@ elif modulos == "Ejercicio 3":
             st.write(f"El tiempo de transferencia en: {minutos} minutos")
             st.write(f"El tiempo de transferencia en: {segundos} segundos")
             st.success("¡Cálculo realizado y guardado con éxito!")
-    
+        
         elif tipo_Funcion == "Otro":
-            st.write("No se tiene implementado otras funciones")
-        else:
-            st.write("Elija una opción del menú desplegable.")
-      
-      # Mostrar los datos guardados en una tabla
-      if st.session_state.tiempo.shape[0] > 0:
-        st.subheader(" Tabla histórica de resultados obtenidos")
-        df_mostrar = pd.DataFrame(st.session_state.tiempo,columns=["Tamaño (MB)","Velocidad (MBPS)","Tiempo en Minutos", "Tiempo en Segundos"],)
-    
-        # 3. Formato corregido para NumberColumn
-        st.dataframe(df_mostrar,use_container_width=True,
-            column_config={
-              "Tamaño (MB)": st.column_config.NumberColumn("Tamaño (MB)", format="%.2f MB"),
-              "Velocidad (MBPS)": st.column_config.NumberColumn("Velocidad (MBPS)", format="%.2f MBPS"),
-              "Tiempo en Minutos": st.column_config.NumberColumn("Tiempo (min)", format="%.2f min"),
-              "Tiempo en Segundos": st.column_config.NumberColumn("Tiempo (seg)", format="%.2f seg"),
-              },
-          )
-      else:
-        st.info("Aún no hay ejecuciones registradas.")
+            st.write("No se tiene implementado otras funciones")
+        else:
+            st.write("Elija una opción del menú desplegable.")
+    
+    # Mostrar los datos guardados en una tabla
+    if st.session_state.tiempo.shape[0] > 0:
+        st.subheader(" Tabla histórica de resultados obtenidos")
+        df_mostrar = pd.DataFrame(st.session_state.tiempo,columns=["Tamaño (MB)","Velocidad (MBPS)","Tiempo en Minutos", "Tiempo en Segundos"],)
+        
+        # 3. Formato corregido para NumberColumn
+        st.dataframe(df_mostrar,use_container_width=True,
+            column_config={
+                "Tamaño (MB)": st.column_config.NumberColumn("Tamaño (MB)", format="%.2f MB"),
+                "Velocidad (MBPS)": st.column_config.NumberColumn("Velocidad (MBPS)", format="%.2f MBPS"),
+                "Tiempo en Minutos": st.column_config.NumberColumn("Tiempo (min)", format="%.2f min"),
+                "Tiempo en Segundos": st.column_config.NumberColumn("Tiempo (seg)", format="%.2f seg"),
+               },
+        )
+    else:
+        st.info("Aún no hay ejecuciones registradas.")
 
 
 ##EJERCICIO 4
