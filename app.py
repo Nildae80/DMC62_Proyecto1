@@ -213,7 +213,7 @@ elif modulos == "Ejercicio 2":
         st.info("Aún no hay productos registrados.")
   
 
-##EJERCICIO 3
+#EJERCICIO 3
 elif modulos == "Ejercicio 3":
   st.header("Te encuentras en la ventana del Ejercicio 3")
   st.write("En este ejercicio se usará funciones desde una librería externa.")
