@@ -11,19 +11,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# ============================================================
-# CARGAR ESTILOS CSS DEL SIDEBAR
-# ============================================================
-
-with open("stilos_sidebar.css", encoding="utf-8") as f:
-    css = f.read()
-
-st.markdown(
-    f"<style>{css}</style>",
-    unsafe_allow_html=True
-)
-
-
 st.sidebar.title("Especialización en Python for Analytics")
 imagen = st.sidebar.image("Python_logo.png", width=200)
 modulos = st.sidebar.selectbox("Selecciones el modulo",["Home","Ejercicio 1","Ejercicio 2","Ejercicio 3","Ejercicio 4"])
