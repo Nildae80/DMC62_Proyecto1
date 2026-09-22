@@ -219,9 +219,9 @@ elif modulos == "Ejercicio 3":
     if "tiempo" not in st.session_state:
         st.session_state.tiempo = np.empty((0, 2), dtype=object)
     st.subheader("Formulario de registro para calcular el tiempo de transferencia de un archivo con `funciones` ")
+    tipo_Funcion = st.selectbox("Seleccione el tipo de función",["Calcular tiempo de transferencia de archivo", "Otro"],index=None,placeholder="Seleccione tipo de movimiento...",)
 
-    with st.form("form_funcion", clear_on_submit=True):
-        tipo_Funcion = st.selectbox("Seleccione el tipo de función",["Calcular tiempo de transferencia de archivo", "Otro"],index=None,placeholder="Seleccione tipo de movimiento...",)
+    with st.form("form_funcion", clear_on_submit=True):        
         
         if tipo_Funcion == "Calcular tiempo de transferencia de archivo": 
             tamano_archivo = float(st.number_input("Ingresa el tamaño del archivo (MB)",value=0.00,min_value=0.0,step=0.1,format="%.2f",))
