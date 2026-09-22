@@ -255,7 +255,7 @@ elif modulos == "Ejercicio 3":
                     st.session_state.tiempo = np.vstack((st.session_state.tiempo, nuevo_registro))
                     
                     st.success(f"Cálculo exitoso: {minutos} min, {segundos} seg.")
-                    st.toast("¡Cálculo realizado y guardado con éxito!", icon="✅")
+                    st.info("¡Cálculo realizado y guardado con éxito!", icon="✅")
                     st.rerun()
 
     elif tipo_Funcion == "Otro":
