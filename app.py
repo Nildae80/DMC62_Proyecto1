@@ -252,8 +252,8 @@ elif modulos == "Ejercicio 3":
           st.write(f"El tiempo de transferencia en: {segundos} segundos")
           st.success("¡Cálculo realizado y guardado con éxito!")
     
-    elif tipo_Funcion == "Otro":
-      st.write("No se tiene implementado otras funciones")
+    #elif tipo_Funcion == "Otro":
+    #  st.write("No se tiene implementado otras funciones")
         
     else:
       st.write("Elija una opción del menú desplegable.")
