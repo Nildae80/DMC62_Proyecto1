@@ -11,377 +11,346 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-/* =========================================================
-   PROYECTO 1 | ESTILOS CORPORATIVOS
-   Paleta: Gris Ejecutivo + Azul Corporativo
-   Archivo pensado para Streamlit
-   ========================================================= */
+/* ============================================================
+   SIDEBAR — ESTILO EJECUTIVO + AZUL CORPORATIVO
+   Aplicación: Proyecto 1 | Python Analytics
+   Este CSS afecta únicamente al sidebar de Streamlit.
+   ============================================================ */
 
-/* ---------- PALETA ---------- */
 :root {
-    --bg-main: #F3F4F6;
-    --bg-card: #FFFFFF;
-    --bg-dark: #1F2937;
-    --bg-dark-2: #111827;
-
-    --blue: #2563EB;
-    --blue-dark: #1D4ED8;
-    --blue-light: #3B82F6;
-    --blue-soft: #EFF6FF;
-
-    --text: #111827;
-    --text-secondary: #4B5563;
-    --text-muted: #6B7280;
-
-    --border: #D1D5DB;
-    --border-light: #E5E7EB;
-
-    --success: #059669;
-    --warning: #D97706;
-    --danger: #DC2626;
-
-    --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
-    --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.10);
-    --shadow-blue: 0 8px 25px rgba(37, 99, 235, 0.18);
-
-    --radius: 14px;
-    --transition: 180ms ease;
+    --sb-bg: #111827;
+    --sb-bg-2: #1F2937;
+    --sb-blue: #2563EB;
+    --sb-blue-light: #60A5FA;
+    --sb-blue-soft: rgba(37, 99, 235, .16);
+    --sb-text: #F8FAFC;
+    --sb-muted: #CBD5E1;
+    --sb-border: rgba(148, 163, 184, .18);
+    --sb-glow: rgba(37, 99, 235, .34);
 }
 
-/* ---------- FONDO GENERAL ---------- */
-.stApp {
-    background:
-        radial-gradient(circle at 85% 5%, rgba(37, 99, 235, 0.06), transparent 28%),
-        linear-gradient(135deg, #F8FAFC 0%, var(--bg-main) 100%);
-    color: var(--text);
-}
+/* ---------- PANEL PRINCIPAL ---------- */
 
-/* Evita que la barra superior robe protagonismo */
-header[data-testid="stHeader"] {
-    background: rgba(243, 244, 246, 0.82);
-    backdrop-filter: blur(12px);
-}
-
-/* ---------- CONTENEDOR PRINCIPAL ---------- */
-.main .block-container {
-    max-width: 1450px;
-    padding-top: 2rem;
-    padding-bottom: 3rem;
-    animation: pageEnter 500ms ease both;
-}
-
-@keyframes pageEnter {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ---------- TIPOGRAFÍA ---------- */
-html, body, [class*="css"] {
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-}
-
-h1, h2, h3, h4 {
-    color: var(--text) !important;
-    font-weight: 750 !important;
-    letter-spacing: -0.025em;
-}
-
-h1 {
-    font-size: clamp(2rem, 4vw, 3rem) !important;
-}
-
-h2 {
-    font-size: 1.65rem !important;
-}
-
-h3 {
-    font-size: 1.25rem !important;
-}
-
-p, li, label {
-    color: var(--text-secondary);
-}
-
-/* ---------- SIDEBAR ---------- */
 section[data-testid="stSidebar"] {
     background:
-        linear-gradient(180deg, #1F2937 0%, #111827 100%);
-    border-right: 1px solid rgba(255,255,255,0.08);
-    box-shadow: 8px 0 30px rgba(15, 23, 42, 0.12);
+        radial-gradient(
+            circle at 85% 12%,
+            rgba(37, 99, 235, .20) 0,
+            rgba(37, 99, 235, .08) 18%,
+            transparent 42%
+        ),
+        linear-gradient(
+            160deg,
+            var(--sb-bg-2) 0%,
+            var(--sb-bg) 58%,
+            #0B1120 100%
+        ) !important;
+
+    border-right: 1px solid var(--sb-border);
+    box-shadow:
+        10px 0 35px rgba(15, 23, 42, .18),
+        inset -1px 0 0 rgba(255,255,255,.025);
+
+    position: relative;
+    overflow: hidden;
 }
+
+/* Línea azul decorativa superior */
+section[data-testid="stSidebar"]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--sb-blue),
+        var(--sb-blue-light),
+        var(--sb-blue),
+        transparent
+    );
+    box-shadow: 0 0 16px var(--sb-glow);
+    animation: sidebarGlow 3.5s ease-in-out infinite;
+    z-index: 10;
+}
+
+@keyframes sidebarGlow {
+    0%, 100% {
+        opacity: .65;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Luz ambiental */
+section[data-testid="stSidebar"]::after {
+    content: "";
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    right: -150px;
+    bottom: 8%;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, .10);
+    filter: blur(45px);
+    pointer-events: none;
+    animation: ambientLight 6s ease-in-out infinite;
+}
+
+@keyframes ambientLight {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: .45;
+    }
+    50% {
+        transform: translate(-35px, -20px) scale(1.18);
+        opacity: .75;
+    }
+}
+
+/* ---------- CONTENIDO ---------- */
 
 section[data-testid="stSidebar"] > div {
-    padding-top: 1.5rem;
+    padding: 1.4rem 1rem 2rem 1rem;
+    position: relative;
+    z-index: 2;
 }
 
-section[data-testid="stSidebar"] * {
-    color: #F9FAFB !important;
-}
+/* ---------- TÍTULO ---------- */
 
 section[data-testid="stSidebar"] h1,
 section[data-testid="stSidebar"] h2,
 section[data-testid="stSidebar"] h3 {
-    color: #FFFFFF !important;
+    color: var(--sb-text) !important;
+    font-weight: 750 !important;
+    letter-spacing: -.025em;
+    line-height: 1.25;
+    text-shadow: 0 1px 10px rgba(0,0,0,.22);
 }
+
+/* ---------- TEXTOS ---------- */
+
+section[data-testid="stSidebar"] p,
+section[data-testid="stSidebar"] label,
+section[data-testid="stSidebar"] span {
+    color: var(--sb-muted);
+}
+
+/* ---------- IMÁGENES / LOGOS ---------- */
 
 section[data-testid="stSidebar"] img {
-    border-radius: 12px;
-    transition: transform var(--transition), filter var(--transition);
-}
-
-section[data-testid="stSidebar"] img:hover {
-    transform: scale(1.025);
-    filter: drop-shadow(0 0 12px rgba(59,130,246,0.35));
-}
-
-/* Selector del sidebar */
-section[data-testid="stSidebar"] div[data-baseweb="select"] > div {
-    background: rgba(255,255,255,0.08) !important;
-    border: 1px solid rgba(255,255,255,0.15) !important;
-    border-radius: 10px !important;
-    transition: all var(--transition);
-}
-
-section[data-testid="stSidebar"] div[data-baseweb="select"] > div:hover {
-    border-color: rgba(59,130,246,0.8) !important;
-    box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
-}
-
-/* ---------- SELECTORES GENERALES ---------- */
-div[data-baseweb="select"] > div {
-    border: 1px solid var(--border) !important;
-    border-radius: 10px !important;
-    background: #FFFFFF !important;
-    transition: border-color var(--transition), box-shadow var(--transition);
-}
-
-div[data-baseweb="select"] > div:hover {
-    border-color: var(--blue-light) !important;
-    box-shadow: 0 0 0 3px rgba(37,99,235,0.08);
-}
-
-/* ---------- INPUTS ---------- */
-div[data-baseweb="input"] {
-    border-radius: 10px !important;
-}
-
-div[data-baseweb="input"] > div {
-    background: #FFFFFF !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 10px !important;
-    transition: all var(--transition);
-}
-
-div[data-baseweb="input"] > div:hover {
-    border-color: #93C5FD !important;
-}
-
-div[data-baseweb="input"] > div:focus-within {
-    border-color: var(--blue) !important;
-    box-shadow:
-        0 0 0 3px rgba(37,99,235,0.12),
-        0 4px 14px rgba(37,99,235,0.08);
-}
-
-/* Texto de inputs */
-div[data-baseweb="input"] input {
-    color: var(--text) !important;
-    font-weight: 500;
-}
-
-/* ---------- FORMULARIOS ---------- */
-div[data-testid="stForm"] {
-    background: rgba(255,255,255,0.94);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius);
-    padding: 1.4rem;
-    box-shadow: var(--shadow-sm);
-    transition: transform var(--transition), box-shadow var(--transition);
-}
-
-div[data-testid="stForm"]:hover {
-    box-shadow: var(--shadow-md);
-}
-
-/* ---------- BOTONES ---------- */
-.stButton > button,
-.stFormSubmitButton > button {
-    background: linear-gradient(135deg, var(--blue), var(--blue-dark)) !important;
-    color: #FFFFFF !important;
-    border: none !important;
-    border-radius: 10px !important;
-    padding: 0.65rem 1.25rem !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.01em;
-    box-shadow: 0 5px 14px rgba(37,99,235,0.20);
+    border-radius: 14px;
     transition:
-        transform var(--transition),
-        box-shadow var(--transition),
-        filter var(--transition);
+        transform .30s ease,
+        filter .30s ease,
+        box-shadow .30s ease;
 }
 
-.stButton > button:hover,
-.stFormSubmitButton > button:hover {
+/* Python logo */
+section[data-testid="stSidebar"] img:hover {
+    transform: translateY(-3px) scale(1.025);
+    filter: brightness(1.08);
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.22),
+        0 0 22px rgba(37,99,235,.20);
+}
+
+/* ---------- SELECTOR DEL MENÚ ---------- */
+
+section[data-testid="stSidebar"] div[data-baseweb="select"] {
+    margin-top: .45rem;
+}
+
+section[data-testid="stSidebar"] div[data-baseweb="select"] > div {
+    min-height: 46px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.035)
+        ) !important;
+
+    border: 1px solid rgba(148,163,184,.22) !important;
+    border-radius: 12px !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.035),
+        0 5px 16px rgba(0,0,0,.12);
+
+    transition:
+        border-color .20s ease,
+        box-shadow .20s ease,
+        transform .20s ease,
+        background .20s ease;
+}
+
+/* Hover */
+section[data-testid="stSidebar"] div[data-baseweb="select"] > div:hover {
+    border-color: rgba(96,165,250,.72) !important;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(37,99,235,.20),
+            rgba(255,255,255,.06)
+        ) !important;
+
+    box-shadow:
+        0 0 0 3px rgba(37,99,235,.10),
+        0 8px 22px rgba(0,0,0,.18),
+        0 0 22px rgba(37,99,235,.12);
+
+    transform: translateY(-1px);
+}
+
+/* Cuando recibe foco */
+section[data-testid="stSidebar"] div[data-baseweb="select"] > div:focus-within {
+    border-color: var(--sb-blue-light) !important;
+    box-shadow:
+        0 0 0 3px rgba(37,99,235,.16),
+        0 0 25px rgba(37,99,235,.20);
+}
+
+/* Texto seleccionado */
+section[data-testid="stSidebar"] div[data-baseweb="select"] div {
+    color: #F8FAFC !important;
+}
+
+/* ---------- MENÚ DESPLEGABLE ---------- */
+
+/* Streamlit renderiza el menú fuera del sidebar en algunas versiones */
+div[data-baseweb="popover"] {
+    border-radius: 12px !important;
+    border: 1px solid #D1D5DB !important;
+    box-shadow:
+        0 15px 40px rgba(15,23,42,.18),
+        0 0 0 1px rgba(37,99,235,.04);
+    overflow: hidden;
+}
+
+div[data-baseweb="popover"] [role="option"] {
+    transition:
+        background .16s ease,
+        padding-left .16s ease;
+}
+
+div[data-baseweb="popover"] [role="option"]:hover {
+    background: #EFF6FF !important;
+    color: #1D4ED8 !important;
+    padding-left: 18px;
+}
+
+/* ---------- BOTONES DEL SIDEBAR ---------- */
+
+section[data-testid="stSidebar"] .stButton > button {
+    width: 100%;
+    background:
+        linear-gradient(
+            135deg,
+            var(--sb-blue),
+            #1D4ED8
+        ) !important;
+
     color: #FFFFFF !important;
-    transform: translateY(-2px);
-    box-shadow: 0 9px 22px rgba(37,99,235,0.28);
-    filter: brightness(1.05);
+    border: 1px solid rgba(96,165,250,.25) !important;
+    border-radius: 10px !important;
+
+    font-weight: 700 !important;
+
+    box-shadow:
+        0 6px 16px rgba(37,99,235,.22);
+
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        filter .18s ease;
 }
 
-.stButton > button:active,
-.stFormSubmitButton > button:active {
+section[data-testid="stSidebar"] .stButton > button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+    box-shadow:
+        0 10px 24px rgba(37,99,235,.32),
+        0 0 20px rgba(37,99,235,.14);
+}
+
+section[data-testid="stSidebar"] .stButton > button:active {
     transform: translateY(0);
 }
 
-/* ---------- MÉTRICAS ---------- */
-div[data-testid="stMetric"] {
-    background: #FFFFFF;
-    border: 1px solid var(--border-light);
-    border-left: 4px solid var(--blue);
-    border-radius: 12px;
-    padding: 1rem 1.1rem;
-    box-shadow: var(--shadow-sm);
-    transition: transform var(--transition), box-shadow var(--transition);
-}
+/* ---------- SEPARADORES ---------- */
 
-div[data-testid="stMetric"]:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-blue);
-}
-
-div[data-testid="stMetricLabel"] {
-    color: var(--text-secondary) !important;
-    font-weight: 650 !important;
-}
-
-div[data-testid="stMetricValue"] {
-    color: var(--text) !important;
-    font-weight: 800 !important;
-}
-
-/* ---------- DATAFRAMES / TABLAS ---------- */
-div[data-testid="stDataFrame"] {
-    border: 1px solid var(--border-light);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    background: #FFFFFF;
-}
-
-/* ---------- ALERTAS ---------- */
-div[data-testid="stAlert"] {
-    border-radius: 11px !important;
-    border: 1px solid var(--border-light) !important;
-    box-shadow: var(--shadow-sm);
-}
-
-/* ---------- INFO ---------- */
-div[data-testid="stAlert"][kind="info"] {
-    background: var(--blue-soft);
-}
-
-/* ---------- DIVISORES ---------- */
-hr {
+section[data-testid="stSidebar"] hr {
     border: none !important;
     height: 1px !important;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        #CBD5E1,
-        transparent
-    ) !important;
-    margin: 1.5rem 0 !important;
+    margin: 1.25rem 0 !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(148,163,184,.35),
+            rgba(59,130,246,.45),
+            rgba(148,163,184,.35),
+            transparent
+        ) !important;
 }
 
-/* ---------- IMÁGENES PRINCIPALES ---------- */
-.main img {
-    border-radius: 14px;
-    transition: transform 250ms ease, filter 250ms ease;
+/* ---------- ANIMACIÓN DE ENTRADA ---------- */
+
+section[data-testid="stSidebar"] > div > div {
+    animation: sidebarEnter .55s cubic-bezier(.22,.61,.36,1) both;
 }
 
-.main img:hover {
-    transform: translateY(-2px);
-    filter: drop-shadow(0 10px 18px rgba(15,23,42,0.12));
-}
-
-/* ---------- CONTENEDORES / COLUMNAS ---------- */
-div[data-testid="column"] {
-    transition: transform var(--transition);
-}
-
-/* ---------- RADIO / CHECKBOX ---------- */
-div[role="radiogroup"] label,
-div[data-testid="stCheckbox"] label {
-    color: var(--text-secondary) !important;
-}
-
-/* ---------- FOCUS ACCESIBLE ---------- */
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-    outline: 3px solid rgba(37,99,235,0.28) !important;
-    outline-offset: 2px;
+@keyframes sidebarEnter {
+    from {
+        opacity: 0;
+        transform: translateX(-12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 /* ---------- SCROLLBAR ---------- */
-::-webkit-scrollbar {
-    width: 9px;
-    height: 9px;
+
+section[data-testid="stSidebar"] ::-webkit-scrollbar {
+    width: 7px;
 }
 
-::-webkit-scrollbar-track {
-    background: #E5E7EB;
+section[data-testid="stSidebar"] ::-webkit-scrollbar-track {
+    background: rgba(255,255,255,.03);
 }
 
-::-webkit-scrollbar-thumb {
-    background: #9CA3AF;
+section[data-testid="stSidebar"] ::-webkit-scrollbar-thumb {
+    background: rgba(148,163,184,.30);
     border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: var(--blue);
+section[data-testid="stSidebar"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--sb-blue-light);
+}
+
+/* ---------- ACCESIBILIDAD ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    section[data-testid="stSidebar"] *,
+    section[data-testid="stSidebar"]::before,
+    section[data-testid="stSidebar"]::after {
+        animation: none !important;
+        transition: none !important;
+    }
 }
 
 /* ---------- RESPONSIVE ---------- */
+
 @media (max-width: 768px) {
-    .main .block-container {
-        padding: 1rem;
-    }
-
-    h1 {
-        font-size: 2rem !important;
-    }
-
-    h2 {
-        font-size: 1.4rem !important;
-    }
-
-    div[data-testid="stForm"] {
-        padding: 1rem;
-    }
-}
-
-/* ---------- REDUCCIÓN DE MOVIMIENTO ---------- */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
+    section[data-testid="stSidebar"] > div {
+        padding-left: .8rem;
+        padding-right: .8rem;
     }
 }
 
