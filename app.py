@@ -22,8 +22,7 @@ col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
   st.image("Python_logo.png", width=300)
   st.title("PROYECTO 1 📋")
-  st.markdown("---")
-
+  
 st.subheader("Proyecto Aplicado en Streamlit – Fundamentos de Programación")
 
 if modulos == "Home":
