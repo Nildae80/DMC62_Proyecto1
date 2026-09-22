@@ -233,7 +233,7 @@ elif modulos == "Ejercicio 3":
       velocidad = float(st.number_input("Ingresa la velocidad de transferencia (MBPS)",value=0.00,min_value=0.0,step=0.1,format="%.2f",))
       btn_guardar = st.form_submit_button("Guardar ➕")
     
-      if btn_guardar:
+    if btn_guardar:
         if velocidad <= 0 or tamano_archivo <= 0:
           st.error("El tamaño del archivo y la velocidad deben ser mayores a 0.")
         
@@ -253,8 +253,8 @@ elif modulos == "Ejercicio 3":
           st.write(f"El tiempo de transferencia en: {segundos} segundos")
           st.success("¡Cálculo realizado y guardado con éxito!")
     
-    #elif tipo_Funcion == "Otro":
-    #  st.write("No se tiene implementado otras funciones")
+    elif tipo_Funcion == "Otro":
+      st.write("No se tiene implementado otras funciones")
         
     else:
       st.write("Elija una opción del menú desplegable.")
