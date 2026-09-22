@@ -252,7 +252,7 @@ elif modulos == "Ejercicio 3":
     
     # Mostrar los datos guardados en una tabla
     if st.session_state.tiempo.shape[0] > 0:
-        st.subheader(" Tabla histórica de resultados obtenidos")
+        st.subheader("⚡ Tabla histórica de resultados obtenidos")
         df_mostrar = pd.DataFrame(st.session_state.tiempo,columns=["Tamaño (MB)","Velocidad (MBPS)","Tiempo en Minutos", "Tiempo en Segundos"],)
         
         # 3. Formato corregido para NumberColumn
