@@ -217,9 +217,8 @@ elif modulos == "Ejercicio 3":
     st.header("Te encuentras en la ventana del Ejercicio 3")
     st.write("En este ejercicio se usará funciones desde una librería externa.")
     if "tiempo" not in st.session_state:
-        st.session_state.tiempo = np.empty((0, 2), dtype=object)
-  
-    st.subheader("Formulario de registro para calcular el tiempo de transferencia de un archivo con `funciones` ")
+        st.session_state.tiempo = np.empty((0, 2), dtype=object)
+    st.subheader("Formulario de registro para calcular el tiempo de transferencia de un archivo con `funciones` ")
 
     with st.form("form_funcion", clear_on_submit=True):
       tipo_Funcion = st.selectbox("Seleccione el tipo de función",["Calcular tiempo de transferencia de archivo", "Otro"],index=None,placeholder="Seleccione tipo de movimiento...",)
